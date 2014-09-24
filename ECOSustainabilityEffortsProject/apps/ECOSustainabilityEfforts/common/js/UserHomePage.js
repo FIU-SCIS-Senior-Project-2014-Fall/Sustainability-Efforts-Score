@@ -18,4 +18,3 @@ currentPage.init = function(){
 	
 	WL.Logger.debug("UserHomePage :: init");
 };
-

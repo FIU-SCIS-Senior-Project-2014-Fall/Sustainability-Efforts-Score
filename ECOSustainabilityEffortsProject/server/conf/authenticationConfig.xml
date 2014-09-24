@@ -66,6 +66,10 @@
        	<customSecurityTest name="DummyAdapter-securityTest">
        		<test realm="SampleAppRealm" isInternalUserID="true"/>
        	</customSecurityTest>
+       	<customSecurityTest
+       		name="SingleStepAuthAdapter-securityTest">
+       		<test realm="SingleStepAuthRealm" isInternalUserID="true"/>
+       	</customSecurityTest>
 	 </securityTests> 
 	
 	<realms>
@@ -109,6 +113,11 @@
             <parameter name="outdated-configuration" value="alert"/>
     	</realm -->
 
+		<realm name="SingleStepAuthRealm" loginModule="AuthLoginModule">
+			<className>com.worklight.integration.auth.AdapterAuthenticator</className>
+			<parameter name="login-function" value="SingleStepAuthAdapter.onAuthRequired"/>
+			<parameter name="logout-function" value="SingleStepAuthAdapter.onLogout"/>
+		</realm>
 	</realms>
 
 	<loginModules>
@@ -150,6 +159,9 @@
     	<!-- <loginModule name="MySSO" ssoDeviceLoginModule="WLDeviceAutoProvisioningLoginModule">
 			<className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
 		</loginModule> -->
+    	<loginModule name="AuthLoginModule">
+    		<className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+    	</loginModule>
 	</loginModules>
 
 </tns:loginConfiguration>

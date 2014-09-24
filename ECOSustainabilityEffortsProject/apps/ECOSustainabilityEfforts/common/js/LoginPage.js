@@ -1,5 +1,5 @@
-<!DOCTYPE HTML>
-<!--
+/*
+*
     COPYRIGHT LICENSE: This information contains sample code provided in source code form. You may copy, modify, and distribute
     these sample programs in any form without payment to IBM® for the purposes of developing, using, marketing or distributing
     application programs conforming to the application programming interface for the operating platform for which the sample code is written.
@@ -8,34 +8,14 @@
     FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT. IBM SHALL NOT BE LIABLE FOR ANY DIRECT,
     INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR OPERATION OF THE SAMPLE SOURCE CODE.
     IBM HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS OR MODIFICATIONS TO THE SAMPLE SOURCE CODE.
-  
- -->
-<html>
-   	<head>
-   		<meta charset="UTF-8">
-   		<title>Multi-page application</title>
-   		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
-   		<!--
-    		<link rel="shortcut icon" href="images/favicon.png">
-    		<link rel="apple-touch-icon" href="images/apple-touch-icon.png"> 
-    	-->
-   		<link rel="stylesheet" href="css/main.css">
-   		<script>window.$ = window.jQuery = WLJQ;</script>
-   	</head>
-   	<body style="display: none;">
-		<!-- This is static header, it will be shown always -->
-		<div id="header">
-			<h1>Multi-page application</h1>
-		</div>
-		
-		<div id="wrapper">
-			<!-- This is a placeholder for dynamic page content -->
-			<div id="pagePort"></div>
-		</div>
-		
-   		<script src="js/initOptions.js"></script>
-   		<script src="js/main.js"></script>
-   		<script src="js/SingleStepAuthRealmChallengeProcessor.js"></script>
-   		<script src="js/messages.js"></script>
-   	</body>
-</html>
+
+*/
+
+currentPage = {};
+
+currentPage.init = function(){
+	alert("LoginPage :: init");
+
+	WL.Logger.debug("LoginPage :: init");
+};
+
