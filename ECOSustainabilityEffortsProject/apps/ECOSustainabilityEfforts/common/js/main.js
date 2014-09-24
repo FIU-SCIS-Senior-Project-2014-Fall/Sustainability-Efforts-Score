@@ -18,69 +18,43 @@ var path = "";
 function wlCommonInit(){
 	alert("wlCommonInit");
 	
-	WL.Logger.debug("wlCommonInit");
-	
 	// Special case for Windows Phone 8 only.
 	if (WL.Client.getEnvironment() == WL.Environment.WINDOWS_PHONE_8) {
 	    path = "/www/default/";
 	}
 	
 	$("#pagePort").load(path + "pages/HomePage.html", function(){
-		
 		$.getScript(path + "js/HomePage.js", function() {
 			if (currentPage.init) {
 				currentPage.init();
 			}
 		});
+	});
+
+}
+
+function getSecretData(){
+	var invocationData = {
+			adapter : "SingleStepAuthAdapter",
+			procedure: "getSecretData",
+			parameters: []
+	};
 	
+	WL.Client.invokeProcedure(invocationData, {
+		onSuccess: getSecretDataOK, 
+		onFailure: getSecretDataFAIL
 	});
 }
 
-$('#signinbutton').bind('click', function () {
-    alert("signinbutton.click");
-	
-	var invocationData = {
-			adapter: "DummyAdapter",
-			procedure: "getSecretData",
-			parameters: []
-	};
-	
-	WL.Client.invokeProcedure(invocationData, {
-		onSuccess: getSecretDataSuccess,
-		onFailure: getSecretDataFailure
-	});
-});
+function getSecretDataOK(response){
+	alert(JSON.stringify(response.invocationResult));
 
-currentPage.getSecretData = function (){
-	alert("getSecretData");
+	alert(response.invocationResult);
+}
 
-	var invocationData = {
-			adapter: "DummyAdapter",
-			procedure: "getSecretData",
-			parameters: []
-	};
-	
-	WL.Client.invokeProcedure(invocationData, {
-		onSuccess: getSecretDataSuccess,
-		onFailure: getSecretDataFailure
-	});
-};
+function getSecretDataFAIL(response){
+	alert(JSON.stringify(response.invocationResult));
 
-currentPage.getSecretDataSuccess = function (response){
-	alert("getSecretData_Callback response :: " + JSON.stringify(response));
-};
+	alert(response.invocationResult);
+}
 
-currentPage.getSecretDataFailure = function (response){
-	alert("getSecretDataFailure");
-
-	WL.SimpleDialog.show("Form Based Authentication", "Service not available. Try again later.", 
-			[{
-				text : 'Reload',
-				handler : WL.Client.reloadApp 
-			},
-			{
-				text: 'Close',
-				handler : function() {}
-			}]
-	);
-};

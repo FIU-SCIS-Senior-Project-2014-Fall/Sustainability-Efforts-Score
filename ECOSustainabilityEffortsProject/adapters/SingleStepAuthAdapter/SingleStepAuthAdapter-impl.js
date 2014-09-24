@@ -11,37 +11,55 @@
 
 */
 
-currentPage = {};
+function onAuthRequired(headers, errorMessage){
+	errorMessage = errorMessage ? errorMessage : null;
+	
+	return {
+		authRequired: true,
+		errorMessage: errorMessage
+	};
+}
 
-currentPage.init = function(){
-	alert("HomePage :: init");
+function submitAuthentication(username, password){
+	WL.Logger.warn("submitAuthentication");
+	
+	var isValidUser = WL.Server.invokeSQLStoredProcedure({
+		procedure : "isValidUser",
+		parameters : [username, password]
+	});
+	
+	WL.Logger.warn(isValidUser);
+	
+	if (isValidUser.resultSet[0].Result == 1){
 
-	WL.Logger.debug("HomePage :: init");
-};
+		var userIdentity = {
+				userId: username,
+				displayName: username 
+		};
+		
+		userIdentity.attributes = 	WL.Server.invokeSQLStoredProcedure({
+										procedure : "GetUserDetails",
+										parameters : [username]
+									});
+
+		WL.Server.setActiveUser("SingleStepAuthRealm", userIdentity);
+		
+		return { 
+			authRequired: false 
+		};
+	}
+
+	return onAuthRequired(null, "Invalid login credentials");
+}
 
 function getSecretData(){
-	alert("getSecretData");
-	
-	var invocationData = {
-			adapter : "SingleStepAuthAdapter",
-			procedure: "getSecretData",
-			parameters: []
+	return {
+		secretData: "A very very very very secret data"
 	};
-	
-	WL.Client.invokeProcedure(invocationData, {
-		onSuccess: getSecretDataOK, 
-		onFailure: getSecretDataFAIL
-	});
 }
 
-function getSecretDataOK(response){
-	alert("getSecretDataOK");
+function onLogout(){
+	WL.Logger.debug("Logged out");
 
-	alert(JSON.stringify(response.invocationResult));
-}
-
-function getSecretDataFAIL(response){
-	alert("getSecretDataFAIL");
-
-	alert(JSON.stringify(response.invocationResult));
+	WL.Server.setActiveUser("SingleStepAuthRealm", null);
 }
