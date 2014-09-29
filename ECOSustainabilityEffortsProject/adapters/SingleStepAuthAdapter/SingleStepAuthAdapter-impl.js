@@ -11,6 +11,8 @@
 
 */
 
+var session = [];
+
 function onAuthRequired(headers, errorMessage){
 	errorMessage = errorMessage ? errorMessage : null;
 	
@@ -52,9 +54,9 @@ function submitAuthentication(username, password){
 	return onAuthRequired(null, "Invalid login credentials");
 }
 
-function getSecretData(){
+function getSessionData(){
 	return {
-		secretData: "A very very very very secret data"
+		data: session
 	};
 }
 

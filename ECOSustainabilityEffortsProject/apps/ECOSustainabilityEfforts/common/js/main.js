@@ -16,13 +16,15 @@ var currentPage = {};
 var path = "";
 
 function wlCommonInit(){
-	alert("wlCommonInit");
+	alert("calling wlCommonInit()");
 	
 	// Special case for Windows Phone 8 only.
 	if (WL.Client.getEnvironment() == WL.Environment.WINDOWS_PHONE_8) {
 	    path = "/www/default/";
 	}
 	
+	alert("Loading Home page");
+
 	$("#pagePort").load(path + "pages/HomePage.html", function(){
 		$.getScript(path + "js/HomePage.js", function() {
 			if (currentPage.init) {
@@ -31,30 +33,12 @@ function wlCommonInit(){
 		});
 	});
 
+	alert("Loading Angular");
+
+	angular.element(document).ready
+	(
+			function() {
+				angular.bootstrap(document, ['App']);
+			}
+	);
 }
-
-function getSecretData(){
-	var invocationData = {
-			adapter : "SingleStepAuthAdapter",
-			procedure: "getSecretData",
-			parameters: []
-	};
-	
-	WL.Client.invokeProcedure(invocationData, {
-		onSuccess: getSecretDataOK, 
-		onFailure: getSecretDataFAIL
-	});
-}
-
-function getSecretDataOK(response){
-	alert(JSON.stringify(response.invocationResult));
-
-	alert(response.invocationResult);
-}
-
-function getSecretDataFAIL(response){
-	alert(JSON.stringify(response.invocationResult));
-
-	alert(response.invocationResult);
-}
-

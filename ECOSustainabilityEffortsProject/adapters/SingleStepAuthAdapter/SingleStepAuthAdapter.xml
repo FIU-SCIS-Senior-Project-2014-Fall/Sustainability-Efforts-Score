@@ -29,7 +29,7 @@
 	</connectivity>
 
 	<!-- Replace this with appropriate procedures -->
-	<procedure name="getSecretData" securityTest="SingleStepAuthAdapter-securityTest"/>
+	<procedure name="getSessionData" securityTest="SingleStepAuthAdapter-securityTest"/>
 	<procedure name="submitAuthentication"/>
 
 </wl:adapter>
