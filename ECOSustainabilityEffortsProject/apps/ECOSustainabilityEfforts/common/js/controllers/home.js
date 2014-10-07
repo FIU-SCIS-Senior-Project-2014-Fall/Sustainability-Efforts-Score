@@ -1,30 +1,35 @@
 app.controller(
 	'homeController',
-	function($scope, getSessionData)
+	function($scope, $location, getSessionDataFactory)
 	{
-		alert("homeController", $scope);
+		console.log('homeController', $scope);
 
 		$scope.loadUserHome = function()
 		{
-			alert("loadUserHome");
+			console.log('loadUserHome');
 
-			$scope.errorMsg = "";
+			$scope.errorMsg = '';
 
-			getSessionData().then
+			getSessionDataFactory().then
 			(
 				function(session)
 				{
-					alert("Got Session ",session);
+					console.log('Got Session', session);
 					
 					$scope.session = session;
 					
-					$scope.errorMsg = "";
+					$scope.errorMsg = '';
+					
+					$location.path('/userHome');
+					
+					$scope.$apply();
+
 				},
 				function(error)
 				{
-					alert("Error");
+					alert('Error');
 					
-					$scope.errorMsg = "Could Not Load Session";
+					$scope.errorMsg = 'Could Not Load Session';
 				}
 			);
 		};
