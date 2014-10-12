@@ -30,7 +30,7 @@ app.controller(
 			
 			var invocationData = 
 			{
-				adapter : "EditProfileAdapter",
+				adapter : "SingleStepAuthAdapter",
 				procedure: "saveUserProfile",
 				parameters: [$scope.userSession.UserName, $scope.userSession.FirstName, $scope.userSession.LastName, $scope.userSession.Email, $scope.userSession.Password]
 			};
