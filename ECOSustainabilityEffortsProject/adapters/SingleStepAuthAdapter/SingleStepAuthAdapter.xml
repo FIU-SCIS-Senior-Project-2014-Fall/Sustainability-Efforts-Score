@@ -22,7 +22,7 @@
 				<driverClass>com.mysql.jdbc.Driver</driverClass>
 				<url>jdbc:mysql://localhost:3306/ECOSustainiabilityEfforts</url>
 			    <user>root</user>
-    			<password>country</password> 
+    			<password></password> 
 			</dataSourceDefinition>
 		</connectionPolicy>
 		<loadConstraints maxConcurrentConnectionsPerNode="5" />
@@ -31,5 +31,6 @@
 	<!-- Replace this with appropriate procedures -->
 	<procedure name="getSessionData" securityTest="SingleStepAuthAdapter-securityTest"/>
 	<procedure name="submitAuthentication"/>
-
+	
+	<procedure name="submitNewUser"/>
 </wl:adapter>

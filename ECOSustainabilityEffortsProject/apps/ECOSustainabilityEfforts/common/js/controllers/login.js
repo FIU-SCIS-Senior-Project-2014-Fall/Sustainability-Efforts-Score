@@ -2,11 +2,11 @@ app.controller(
 	'loginController',
 	function($scope, $location)
 	{
-		alert("loginController");
+		console.log('loginController');
 		
 		$scope.isCustomResponse = function(response)
 		{
-			alert("isCustomResponse", response);
+			console.log('isCustomResponse', response);
 			
 			if (!response || !response.responseJSON	|| response.responseText === null) {
 				return false;
@@ -21,33 +21,33 @@ app.controller(
 	
 		$scope.handleChallenge = function(response)
 		{
-			alert("Handle Challenge",response);
+			console.log('Handle Challenge', response);
 			
 			var authRequired = response.responseJSON.authRequired;
 			
 			if (authRequired == true)
 			{
-				alert("Authentication Required");
+				console.log('Authentication Required');
 				
-				alert($location.path());
+				console.log($location.path());
 				
 				$location.path('/login');
 				
-				if (!$scope.$$phase) 
-				{
-					$scope.$apply();
-				}
+				$scope.$apply();
+
+				console.log($location.path());
 			} 
 			else if (authRequired == false)
 			{
-				alert("Authentication Not Required");
+				console.log('Authentication Not Required');
+				
+				console.log($location.path());
 				
 				$location.path('/userHome');
+
+				$scope.$apply();
 				
-				if (!$scope.$$phase) 
-				{
-					$scope.$apply();
-				}
+				console.log($location.path());
 
 				return false;
 			}
@@ -55,11 +55,11 @@ app.controller(
 		
 		$scope.submitLogin = function(userName, password)
 		{
-			alert("submit login");
+			console.log('submit login');
 			
-			alert("userName: " + userName);
+			console.log('userName: ' + userName);
 			
-			alert("password: " + password);
+			console.log('password: ' + password);
 
 			var options = {
 		    	parameters:[userName, password],	
@@ -72,7 +72,7 @@ app.controller(
 
 		$scope.submitLogout = function()
 		{
-			alert("submit login");
+			console.log('submit logout');
 			
 			WL.Client.logout
 			(
@@ -81,12 +81,13 @@ app.controller(
 					onSuccess:
 						function()
 						{
+							console.log($location.path());
+							
 							$location.path('/');
-						
-							if (!$scope.$$phase) 
-							{
-								$scope.$apply();
-							}
+	
+							$scope.$apply();
+							
+							console.log($location.path());
 						}
 				}
 			)			
@@ -100,7 +101,7 @@ app.controller(
 		{
 			if($event.which == 13)
 			{
-				alert("Key Pressed", $event);
+				console.log('Key Pressed', $event);
 
 				$scope.submitLogin();
 			}
