@@ -1,0 +1,68 @@
+/* --- Navbar Style --- */
+.navbar-default-ses {
+  background-color: #2ecc71;
+  border-color: #27ae60;
+}
+.navbar-default-ses .navbar-brand {
+  color: #ffffff;
+}
+.navbar-default-ses .navbar-brand:hover, .navbar-default-ses .navbar-brand:focus {
+  background-color: #27ae60;
+  color: #d1ffed;
+}
+.navbar-default-ses .navbar-nav > li > a {
+  color: #ffffff;
+}
+.navbar-default-ses .navbar-nav > li > a:hover, .navbar-default-ses .navbar-nav > li > a:focus {
+  background-color: #27ae60;
+  color: #d1ffed;
+}
+.navbar-default-ses .navbar-nav .active > a, .navbar-default-ses .navbar-nav .active > a:hover, .navbar-default-ses .navbar-nav .active > a:focus {
+  color: #d1ffed;
+  background-color: #27ae60;
+}
+.navbar-default-ses .navbar-nav .open > a, .navbar-default-ses .navbar-nav .open > a:hover, .navbar-default-ses .navbar-nav .open > a:focus {
+  color: #d1ffed;
+  background-color: #27ae60;
+}
+.navbar-default-ses .navbar-nav .open > a .caret, .navbar-default-ses .navbar-nav .open > a:hover .caret, .navbar-default-ses .navbar-nav .open > a:focus .caret {
+  border-top-color: #d1ffed;
+  border-bottom-color: #d1ffed;
+}
+.navbar-default-ses .navbar-nav > .dropdown > a .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+.navbar-default-ses .navbar-nav > .dropdown > a:hover .caret, .navbar-default-ses .navbar-nav > .dropdown > a:focus .caret {
+  border-top-color: #d1ffed;
+  border-bottom-color: #d1ffed;
+}
+.navbar-default-ses .navbar-toggle {
+  border-color: #ffffff;
+}
+.navbar-default-ses .navbar-toggle:hover, .navbar-default-ses .navbar-toggle:focus {
+  background-color: #27ae60;
+}
+.navbar-default-ses .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .navbar-default-ses .navbar-nav .open .dropdown-menu > li > a {
+    color: #ffffff;
+  }
+  .navbar-default-ses .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default-ses .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #d1ffed;
+    background-color: #27ae60;
+  }
+}
+
+/* --- Button Style --- */
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active {
+  color: #ffffff;
+  background-color: #27ae60;
+  border-color: #27ae60;
+}

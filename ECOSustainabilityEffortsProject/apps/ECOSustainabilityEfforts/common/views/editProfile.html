@@ -1,0 +1,44 @@
+<div ng-include src="'views/navbar-app.html'"></div>
+
+<div class="container">
+<form class="form-horizontal" name="editProfileForm" role="form">
+	<div class="form-group" >
+		<label for="username" class="col-sm-2 control-label">User Name</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" ng-model="userSession.UserName" id="username" placeholder="User Name" disabled/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="firstName" class="col-sm-2 control-label">First Name</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" ng-model="userSession.FirstName" id="firstName" placeholder="First Name" required />
+		</div>
+	</div>
+	<div class="form-group" >
+		<label for="lastName" class="col-sm-2 control-label">Last Name</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" ng-model="userSession.LastName" id="lastName" placeholder="Last Name" required />
+		</div>
+	</div>
+	<div class="form-group" >
+		<label for="email" class="col-sm-2 control-label">E-mail</label>
+		<div class="col-sm-10">
+			<input type="email" class="form-control" ng-model="userSession.Email" id="email" placeholder="E-mail" required />
+		</div>
+	</div>
+	<div class="form-group" >
+		<label for="password" class="col-sm-2 control-label">Password</label>
+		<div class="col-sm-10">
+			<input type="password" class="form-control" ng-model="userSession.Password" id="password" placeholder="Password"  ng-keyup="keyPress($event);" required/>
+		</div>
+	</div>
+		<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+	         <button type="button"  class="btn btn-success"
+	           value="Save" title="Save" ng-click="saveUserProfile()" ng-disabled="!editProfileForm.$valid">
+	           <span>Save</span>
+	         </button>
+	    </div>
+     	</div>
+</form>
+</div>

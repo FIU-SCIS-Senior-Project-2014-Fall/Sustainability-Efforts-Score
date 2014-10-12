@@ -1,0 +1,22 @@
+<p>
+	Currently <b>newUser.html</b> page is loaded.
+</p>
+
+<div ng-model="errorLoginMsg" style="color: red;" id="errorLoginMsg"></div>
+
+<label class="item item-input">
+	<input type="text" ng-model="firstName" id="newfirstNameInputField" placeholder="First Name"/>
+</label>
+<label class="item item-input">
+	<input type="text" ng-model="lastName" id="newlastNameInputField" placeholder="Last Name"/>
+</label>
+<label class="item item-input">
+	<input type="text" ng-model="userName" id="newUserNameInputField" placeholder="User Name"/>
+</label>
+<label class="item item-input">
+	<input type="text" ng-model="email" id="newEmailInputField" placeholder="E-mail"/>
+</label>
+<label class="item item-input">
+	<input type="password" ng-model="password" id="newPasswordInputField" placeholder="Password" ng-keyup="keyPress($event);"/>
+</label>
+<button class="btn btn-lg btn-primary" ng-click="submitNewUser(firstName, lastName, userName, email, password)">Submit</button>
