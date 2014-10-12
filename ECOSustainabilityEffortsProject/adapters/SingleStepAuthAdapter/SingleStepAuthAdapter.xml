@@ -29,8 +29,22 @@
 	</connectivity>
 
 	<!-- Replace this with appropriate procedures -->
-	<procedure name="getSessionData" securityTest="SingleStepAuthAdapter-securityTest"/>
-	<procedure name="submitAuthentication"/>
-	
-	<procedure name="submitNewUser"/>
+    <procedure name="submitAuthentication"/>
+    
+	<procedure name="createUser"/>    
+    <procedure name="getUserDetails" securityTest="SingleStepAuthAdapter-securityTest"/>
+    <procedure name="updateUserProfile" securityTest="SingleStepAuthAdapter-securityTest"/>
+
+	<procedure name="getGroupsNotMemberOf" securityTest="SingleStepAuthAdapter-securityTest"/>    
+	<procedure name="getGroupsMemberOf" securityTest="SingleStepAuthAdapter-securityTest"/>
+	<procedure name="getGroupUsers" securityTest="SingleStepAuthAdapter-securityTest"/>
+	<procedure name="getGroupsOwnerOf" securityTest="SingleStepAuthAdapter-securityTest"/>
+		
+    <procedure name="createNewGroupProfile" securityTest="SingleStepAuthAdapter-securityTest"/>
+    <procedure name="getGroupProfile" securityTest="SingleStepAuthAdapter-securityTest"/>
+    <procedure name="updateGroupProfile" securityTest="SingleStepAuthAdapter-securityTest"/>
+    <!-- <procedure name="getGroups" securityTest="SingleStepAuthAdapter-securityTest"/>-->
+    
+    <procedure name="getStateList"/>
+    <procedure name="getCountryList"/>
 </wl:adapter>

@@ -1,0 +1,92 @@
+<div ng-include src="'views/navbar-app.html'"></div>
+
+
+
+<form class="form-horizontal" name="editProfileForm" role="form">
+	<div class="container form-ses-lg" ng-cloak>
+		<div id="messages" class="alert alert-success" data-ng-show="successMessages" data-ng-bind="successMessages"></div>
+		<div id="messages" class="alert alert-error" data-ng-show="errorMessages" data-ng-bind="errorMessages"></div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-md-6 col-lg-6">
+					<label for="contestName" class="control-label">Contest Name</label>
+					<input type="text" class="form-control" ng-model="contestName" id="contestName" placeholder="Enter a name"/>
+				</div>
+				<div class="col-md-6 col-lg-6">
+					<label for="prize" class="control-label">Prize</label>
+					<input type="text" class="form-control" ng-model="prize" id="prize" placeholder="Enter a prize"/>				
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-4 col-lg-4">
+					<label for="contestType">Contest Type</label>
+					<select class="form-control" ng-model="contestType" ng-options=""  name="contestType" id="contestType">
+						<option value="items">Items</option>
+						<option value="points">Points</option>
+					</select>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<label for="parameterType">Parameter Type</label>
+					<select class="form-control" ng-model="parameterType" ng-options=""  name="parameterType" id="parameterType">
+						<option value="paper">Paper</option>
+						<option value="glass">Glass</option>
+						<option value="plastic">Plastic</option>
+						<option value="energy">Energy</option>
+						<option value="maxPoints">Max Points</option>
+						<option value="firstUser">First User</option>
+					</select>
+				</div>
+				<div class="col-md-2 col-lg-4">
+					<label for="amount" class="control-label">Max. Amount</label>
+					<input type="number" class="form-control" ng-model="quantity" name="amount" id="amount" placeholder="Amount"/>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-4 col-lg-4">
+					<label for="boundaryType">Boundary Type</label>
+					<select class="form-control" ng-model="boundaryType" ng-options=""  name="boundaryType" id="boundaryType">
+						<option value="dateRange">Date Range</option>
+						<option value="location">Location</option>
+						<option value="allBoundaries">All</option>
+					</select>
+				</div>
+			</div>		
+			<br>		   
+			<div class="row">
+				<div class="col-md-3 col-lg-4">
+					<label for="radius" class="control-label">Radius</label>
+					<input type="number" class="form-control" ng-model=""radius"" name=""radius"" id=""radius"" placeholder="Radius"/>
+				</div>
+		        <div class="col-md-4 col-lg-4">
+		            <label class="control-label">From</label>
+		            <p class="input-group">
+		              <input type="text" class="form-control" datepicker-popup="{{}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+		              <span class="input-group-btn">
+		                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+		              </span>
+		            </p>
+		        </div>
+		        <div class="col-md-4 col-lg-4">
+		            <label class="control-label">To</label>
+		            <p class="input-group">
+		              <input type="text" class="form-control" datepicker-popup="{{}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+		              <span class="input-group-btn">
+		                <label></label>
+		                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+		              </span>
+		            </p>
+		        </div>
+			</div>
+			<br>
+		</div>
+		<div class="form-group">
+	         <button type="button"  class="btn btn-success"
+	           value="create" title="create" ng-click="createContest()" ng-disabled="">
+	           <span>Create Contest</span>
+	         </button>
+	     </div>
+	</div>
+</form>
+

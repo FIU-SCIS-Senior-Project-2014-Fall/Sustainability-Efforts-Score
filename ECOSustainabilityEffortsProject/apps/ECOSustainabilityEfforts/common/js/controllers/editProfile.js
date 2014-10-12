@@ -2,59 +2,47 @@
 
 app.controller(
 	'editProfileController',
-	function($scope, getSessionDataFactory){
+	function($scope, getUserDetailsFactory, updateUserProfileFactory){
 		console.log('editProfileController');
 			
 		$scope.init = function(){
 			console.log('getting user profile');
 			
-			getSessionDataFactory().then(
+			getUserDetailsFactory().then(
 				function(session){
 					
 					$scope.userSession = session.invocationResult.resultSet[0];
 						
 				},
 				function(error){
-					console.log('Error');
-					
-					$scope.errorMsg = 'Could Not Load Session';
+					$scope.errorMessages = 'There was a problem with your profile. Please try again.';
 				}
 			);
 		};
 		
 		$scope.init();
 		
-		
-		$scope.saveUserProfile = function(){
-			console.log('saving user profile');
+		$scope.updateUserProfile = function(){
 			
-			var invocationData = 
-			{
-				adapter : "EditProfileAdapter",
-				procedure: "saveUserProfile",
-				parameters: [$scope.userSession.UserName, $scope.userSession.FirstName, $scope.userSession.LastName, $scope.userSession.Email, $scope.userSession.Password]
-			};
+			console.log('updating user profile');
 			
-			WL.Client.invokeProcedure(
-				invocationData,{
-					onSuccess : 
-						$.proxy(
-							function(session){
-								console.log("save profile success");
-							},
-							this
-						),
-					onFailure :  
-						$.proxy(
-							function(error){
-								alert("save profile error");
-							},
-							this
-						)
+			updateUserProfileFactory($scope.userSession.userName, $scope.userSession.firstName, $scope.userSession.lastName, $scope.userSession.email, $scope.userSession.password).then
+			(
+				function(session){
+					$scope.successMessages = 'Profile has been updated!';
+					$scope.errorMessages = null;
+				},
+				function(error){
+					$scope.successMessages = null;	
+					$scope.errorMessages = 'There was a problem updating your profile. Please try again.';
 				}
 			);
 			
-			alert('Profile Saved!');
+			$timeout(function() {
+		        $scope.successMessages = null;
+		        $scope.errorMessages = null;
+		      }, 3000);
+			
 		}
 	}	
 );
