@@ -39,16 +39,21 @@ app.config(
 			templateUrl:'views/newUser.html',
 			controller: 'newUserController'
 		}).when(
-		'/recycleLocationNearBy',
-		{
-			templateUrl:'views/recycleLocationNearBy.html',
-			controller: 'recycleLocationNearByController'
-		}).when(
 		'/editProfile',
 		{
 			templateUrl:'views/editProfile.html',
 			controller: 'editProfileController'
-		}). otherwise({
+		}). when(
+		'/newGroupProfile',
+		{
+			templateUrl:'views/groupProfile.html',
+			controller: 'newGroupController'
+		}).when(
+		'/editGroupProfile',
+		{
+			templateUrl:'views/groupProfile.html',
+			controller: 'editGroupProfileController'
+		}).otherwise({
 			redirectTo: 'views/userHome.html'
 		});
 	}
