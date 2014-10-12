@@ -39,19 +39,10 @@ app.config(
 			templateUrl:'views/newUser.html',
 			controller: 'newUserController'
 		}).when(
-<<<<<<< HEAD
-=======
-		'/recycleLocationNearBy',
-		{
-			templateUrl:'views/recycleLocationNearBy.html',
-			controller: 'recycleLocationNearByController'
-		}).when(
->>>>>>> d04b7a6a89bbcc72ae3d839bd45197a7ac351c64
 		'/editProfile',
 		{
 			templateUrl:'views/editProfile.html',
 			controller: 'editProfileController'
-<<<<<<< HEAD
 		}). when(
 		'/newGroupProfile',
 		{
@@ -63,9 +54,6 @@ app.config(
 			templateUrl:'views/groupProfile.html',
 			controller: 'editGroupProfileController'
 		}).otherwise({
-=======
-		}). otherwise({
->>>>>>> d04b7a6a89bbcc72ae3d839bd45197a7ac351c64
 			redirectTo: 'views/userHome.html'
 		});
 	}
