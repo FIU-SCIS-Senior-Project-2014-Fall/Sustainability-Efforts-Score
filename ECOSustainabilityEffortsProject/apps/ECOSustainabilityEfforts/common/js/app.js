@@ -43,7 +43,17 @@ app.config(
 		{
 			templateUrl:'views/editProfile.html',
 			controller: 'editProfileController'
-		}). otherwise({
+		}). when(
+		'/newGroupProfile',
+		{
+			templateUrl:'views/groupProfile.html',
+			controller: 'newGroupController'
+		}).when(
+		'/editGroupProfile',
+		{
+			templateUrl:'views/groupProfile.html',
+			controller: 'editGroupProfileController'
+		}).otherwise({
 			redirectTo: 'views/userHome.html'
 		});
 	}

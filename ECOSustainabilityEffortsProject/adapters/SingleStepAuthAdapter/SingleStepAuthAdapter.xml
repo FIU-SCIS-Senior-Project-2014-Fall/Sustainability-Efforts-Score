@@ -33,4 +33,6 @@
 	<procedure name="submitAuthentication"/>
 	
 	<procedure name="submitNewUser"/>
+	
+	<procedure name="saveUserProfile"/>
 </wl:adapter>
