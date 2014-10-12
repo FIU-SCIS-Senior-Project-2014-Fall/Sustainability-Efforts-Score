@@ -1,0 +1,36 @@
+<div ng-include src="'views/navbar-app.html'"></div>
+
+<div class="container">
+<form class="form-horizontal" name="groupProfileForm" role="form">
+	<div class="form-group" >
+		<label for="GroupName" class="col-sm-2 control-label">Group Name</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" ng-model="" id="groupName" placeholder="Group Name"/>
+		</div>
+	</div>
+	<div class="check-box">
+		<input type="checkbox" ng-model="checked"/>Geo Tag Based
+	</div>
+	<div>
+		<label for="address" class="control-label">Address</label>
+			<input type="text" class="form-control" ng-model="" ng-disabled="checked" id="address" placeholder="Address" />
+			<div>
+				<input type="number" class="form-control" ng-model="" ng-disabled="checked" id="distance" placeholder="Distance in Feet" />
+			</div>
+	</div>
+	<div class="form-group" >
+		<label for="email" class="col-sm-2 control-label">E-mail</label>
+		<div class="col-sm-10">
+			<input type="email" class="form-control" ng-model="" id="email" placeholder="E-mail" required />
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+	         <button type="button"  class="btn btn-success"
+	           value="Save" title="Save" ng-click="saveGroupProfile()" ng-disabled="!groupProfileForm.$valid">
+	           <span>Save</span>
+	         </button>
+	    </div>
+    </div>
+</form>
+</div>
