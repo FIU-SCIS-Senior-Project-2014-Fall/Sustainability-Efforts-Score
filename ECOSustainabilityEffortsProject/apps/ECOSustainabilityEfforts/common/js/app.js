@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ngRoute']);
+var app = angular.module('App', ['ngRoute', 'datatables']);
 
 var busyIndicator = new WL.BusyIndicator('content');
 
@@ -39,6 +39,11 @@ app.config(
 			templateUrl:'views/newUser.html',
 			controller: 'newUserController'
 		}).when(
+		'/recycleLocationNearBy',
+		{
+			templateUrl:'views/recycleLocationNearBy.html',
+			controller: 'recycleLocationNearByController'
+		}).when(
 		'/editProfile',
 		{
 			templateUrl:'views/editProfile.html',
@@ -48,11 +53,41 @@ app.config(
 		{
 			templateUrl:'views/groupProfile.html',
 			controller: 'newGroupController'
-		}).when(
-		'/editGroupProfile',
+		}). when(
+		'/joinedGroups',
 		{
-			templateUrl:'views/groupProfile.html',
-			controller: 'editGroupProfileController'
+			templateUrl:'views/joinedGroups.html',
+			controller: 'joinedGroupsController'
+		}).when(
+		'/joinGroup',
+		{
+			templateUrl:'views/joinGroup.html',
+			controller: 'joinGroupController'
+		}).when(
+		'/joinedGroupUsers',
+		{
+			templateUrl:'views/joinedGroupUsers.html',
+			controller: 'joinedGroupUsersController'
+		}).when(
+		'/updateGroupProfile',
+		{
+			templateUrl:'views/updateGroupProfile.html',
+			controller: 'updateGroupProfileController'
+		}).when(
+		'/myGroups',
+		{
+			templateUrl:'views/myGroups.html',
+			controller: 'myGroupsController'
+		}).when(
+		'/groupUsers',
+		{
+			templateUrl:'views/groupUsers.html',
+			controller: 'groupUsersController'
+		}).when(
+		'/newContest',
+		{
+			templateUrl:'views/newContest.html',
+			controller: 'newContestController'
 		}).otherwise({
 			redirectTo: 'views/userHome.html'
 		});

@@ -1,6 +1,6 @@
 app.controller(
 	'userHomeController',
-	function($scope, getSessionDataFactory)
+	function($scope, getUserDetailsFactory)
 	{
 		console.log('userHomeController');
 			
@@ -8,23 +8,19 @@ app.controller(
 		{
 			console.log('init');
 			
-			getSessionDataFactory().then
+			getUserDetailsFactory().then
 			(
 				function(session)
 				{
-					console.log('Got Session',session);
+					console.log('getUserDetailsFactory onSuccess');
 					
-					$scope.session = session;
-					
-					$scope.errorMsg = '';
-					
-					
+					$scope.user = session.invocationResult.resultSet;
+
+					console.log($scope.user);
 				},
 				function(error)
 				{
-					alert.log('Error');
-					
-					$scope.errorMsg = 'Could Not Load Session';
+					console.log('getUserDetailsFactory onFailure');
 				}
 			);
 		}

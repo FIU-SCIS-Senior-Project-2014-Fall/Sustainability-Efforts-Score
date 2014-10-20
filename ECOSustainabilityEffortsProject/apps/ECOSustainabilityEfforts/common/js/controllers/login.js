@@ -1,6 +1,6 @@
 app.controller(
 	'loginController',
-	function($scope, $location)
+	function($scope, $location, $timeout)
 	{
 		console.log('loginController');
 		
@@ -11,8 +11,10 @@ app.controller(
 			if (!response || !response.responseJSON	|| response.responseText === null) {
 				return false;
 			}
-			if (typeof(response.responseJSON.authRequired) !== 'undefined'){
-				$scope.errorLoginMsg=response.responseJSON.errorMessage;
+
+			if (typeof(response.responseJSON.authRequired) != 'undefined'){
+				$scope.errorLoginMsg = response.responseJSON.errorMessage;
+				
 				return true;
 			} else {
 				return false;
@@ -31,11 +33,13 @@ app.controller(
 				
 				console.log($location.path());
 				
-				$location.path('/login');
-				
-				$scope.$apply();
+				$timeout(
+					function() {
+						$location.path('/login');
 
-				console.log($location.path());
+						console.log($location.path());
+					}
+				);
 			} 
 			else if (authRequired == false)
 			{
@@ -43,11 +47,13 @@ app.controller(
 				
 				console.log($location.path());
 				
-				$location.path('/userHome');
+				$timeout(
+					function() {
+						$location.path('/userHome');
 
-				$scope.$apply();
-				
-				console.log($location.path());
+						console.log($location.path());
+					}
+				);
 
 				return false;
 			}
@@ -83,11 +89,13 @@ app.controller(
 						{
 							console.log($location.path());
 							
-							$location.path('/');
-	
-							$scope.$apply();
-							
-							console.log($location.path());
+							$timeout(
+								function() {
+									$location.path('/');
+
+									console.log($location.path());
+								}
+							);
 						}
 				}
 			)			
