@@ -1,0 +1,9 @@
+
+/* Stylesheet content from vendors/DataTables-1.10.3/extensions/KeyTable/css/dataTables.keyTable.css in folder common */
+
+
+table.KeyTable th.focus,
+table.KeyTable td.focus {
+	outline: 3px solid #3366FF;
+	outline-offset: -3px;
+}

@@ -4,7 +4,7 @@
 			 US Government Users Restricted Rights - Use, duplication or
              disclosure restricted by GSA ADP Schedule Contract with IBM Corp. -->
 <!-- Attribute "id" must be identical to application folder name -->
-<application xmlns="http://www.worklight.com/application-descriptor" id="ECOSustainabilityEfforts" platformVersion="6.2.0.00.20140915-1601">
+<application xmlns="http://www.worklight.com/application-descriptor" id="ECOSustainabilityEfforts" platformVersion="6.2.0.01.20141015-1508">
     <displayName>ECOSustainabilityEfforts</displayName>
     <description>ECOSustainabilityEfforts</description>
     <author>
@@ -16,5 +16,22 @@
     <mainFile>index.html</mainFile>
     <features/>
     <thumbnailImage>common/images/thumbnail.png</thumbnailImage>
-    
+    <android version="1.0">
+        <worklightSettings include="false"/>
+        <security>
+            <encryptWebResources enabled="false"/>
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+            <publicSigningKey/>
+            <packageName/>
+        </security>
+    </android>
+    <ipad bundleId="com.ECOSustainabilityEfforts" version="1.0">
+        <worklightSettings include="false"/>
+        <security>
+            <encryptWebResources enabled="false"/>
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+        </security>
+    </ipad>
+    <mobileWebApp cacheManifest="no-use"/>
+    <desktopBrowser cacheManifest="no-use"/>
 </application>

@@ -1,0 +1,15 @@
+
+/* JavaScript content from vendors/angular-datatables-master/vendor/bootstrap/js/tests/unit/transition.js in folder common */
+$(function () {
+
+    module("transition")
+
+      test("should be defined on jquery support object", function () {
+        ok($.support.transition !== undefined, 'transition object is defined')
+      })
+
+      test("should provide an end object", function () {
+        ok($.support.transition ? $.support.transition.end : true, 'end string is defined')
+      })
+
+})

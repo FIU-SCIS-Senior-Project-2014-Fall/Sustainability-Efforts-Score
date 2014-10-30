@@ -1,0 +1,40 @@
+<div ng-include src="'views/navbar-app.html'"></div>
+
+<table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" width="100%">
+	<thead>
+	    <tr>
+	        <th>Group Name</th>
+	        <th>E-mail</th>
+	        <th>Address 1</th>
+	        <th>Address 2</th>
+	        <th>City</th>
+	        <th>State</th>
+	        <th>Zip Code</th>
+	        <th>Country</th>
+	        <th>Owner Name</th>
+	        <th>Owner Email</th>
+	        <th></th>
+	        <th></th>
+	    </tr>
+	</thead>
+	<tbody>
+	    <tr ng-repeat="group in groups">
+	    	<td>{{group.groupName}}</td>
+	    	<td>{{group.email}}</td>
+	    	<td>{{group.address1}}</td>
+	    	<td>{{group.address2}}</td>
+	    	<td>{{group.city}}</td>
+	    	<td>{{group.state}}</td>
+	    	<td>{{group.zipcode}}</td>
+	    	<td>{{group.country}}</td>
+	    	<td>{{group.firstName}} {{group.lastName}}</td>
+	    	<td>{{group.ownerEmail}}</td>
+			<td>
+				<input type="button" class="btn btn-success" value="Members" id="requestGroupUsersButton" ng-click="requestGroupUsers(group)" />
+			</td>
+			<td>
+				<input type="button" class="btn btn-success" value="Edit" id="updateProfileButton" ng-click="updateGroupProfile(group)" />
+			</td>
+	    </tr>
+    </tbody>
+</table>
