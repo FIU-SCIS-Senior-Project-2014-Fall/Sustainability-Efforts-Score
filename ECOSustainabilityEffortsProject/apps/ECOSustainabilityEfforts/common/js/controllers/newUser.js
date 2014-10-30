@@ -1,11 +1,9 @@
 app.controller(
 	'newUserController',
-	function($scope, $location, submitNewUserFactory)
-	{
+	function($scope, $location, $timeout, createUserFactory) {
 		console.log('newUserController');
 			
-		$scope.submitNewUser = function(firstName, lastName, userName, email, password)
-		{
+		$scope.submitNewUser = function(firstName, lastName, userName, email, password)	{
 			console.log('submit new user');
 			
 			console.log('firstName: ' + firstName);
@@ -18,23 +16,22 @@ app.controller(
 
 			console.log('password: ' + password);
 
-			submitNewUserFactory(firstName, lastName, userName,  password, email).then
-			(
-				function(session)
-				{
-					console.log('User Created');
+			createUserFactory(firstName, lastName, userName,  password, email).then (
+				function(session) {
+					console.log('createUserFactory onSuccess');
 					
 					$scope.session = session;
 					
 					$scope.errorMsg = '';
 					
-					$location.path('/login');
-
-					$scope.$apply();
+					$timeout(
+						function() {
+								$location.path('/login');
+						}
+					);
 				},
-				function(error)
-				{
-					console.log('Error');
+				function(error)	{
+					console.log('createUserFactory onFailure');
 					
 					$scope.errorMsg = 'Could Not Create User';
 				}

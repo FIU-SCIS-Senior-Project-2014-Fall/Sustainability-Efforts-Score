@@ -1,44 +1,48 @@
 <div ng-include src="'views/navbar-app.html'"></div>
 
-<div class="container">
 <form class="form-horizontal" name="editProfileForm" role="form">
-	<div class="form-group" >
-		<label for="username" class="col-sm-2 control-label">User Name</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" ng-model="userSession.UserName" id="username" placeholder="User Name" disabled/>
+	<div class="container form-ses" ng-cloak>
+		<div id="messages" class="alert alert-success" data-ng-show="successMessages" data-ng-bind="successMessages"></div>
+		<div id="messages" class="alert alert-error" data-ng-show="errorMessages" data-ng-bind="errorMessages"></div>
+	
+		<div class="form-group" >
+			<label for="username" class="control-label">User Name</label>
+				<input type="text" class="form-control" ng-model="userSession.userName" id="username" placeholder="User Name" disabled/>
 		</div>
-	</div>
-	<div class="form-group">
-		<label for="firstName" class="col-sm-2 control-label">First Name</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" ng-model="userSession.FirstName" id="firstName" placeholder="First Name" required />
+		<div class="form-group" ng-class="{ 'has-error' : firstNameFieldForm.firstName.$invalid && !firstNameFieldForm.firstName.$pristine }">
+			<ng-form name="firstNameFieldForm">
+				<label for="firstName" class="control-label">First Name</label>
+					<input type="text" class="form-control" ng-model="userSession.firstName" name="firstName" id="firstName" placeholder="First Name" required />
+					<p class="help-block" ng-show="firstNameFieldForm.firstName.$invalid && firstNameFieldForm.firstName.$pristine ">First Name is required</p>
+			 </ng-form>
 		</div>
-	</div>
-	<div class="form-group" >
-		<label for="lastName" class="col-sm-2 control-label">Last Name</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" ng-model="userSession.LastName" id="lastName" placeholder="Last Name" required />
+		<div class="form-group" ng-class="{ 'has-error' : lastNameFieldForm.lastName.$invalid && !lastNameFieldForm.lastName.$pristine }">
+			<ng-form name="lastNameFieldForm">
+				<label for="lastName" class=" control-label">Last Name</label>
+					<input type="text" class="form-control" ng-model="userSession.lastName" name="lastName" id="lastName" placeholder="Last Name" required />
+					<p class="help-block" ng-show="lastNameFieldForm.lastName.$invalid && !lastNameFieldForm.lastName.$pristine ">Last Name is required</p>
+			</ng-form>
 		</div>
-	</div>
-	<div class="form-group" >
-		<label for="email" class="col-sm-2 control-label">E-mail</label>
-		<div class="col-sm-10">
-			<input type="email" class="form-control" ng-model="userSession.Email" id="email" placeholder="E-mail" required />
+		<div class="form-group" ng-class="{ 'has-error' : emailFieldForm.email.$invalid && !emailFieldForm.email.$pristine }">
+			<ng-form name="emailFieldForm">
+				<label for="email" class=" control-label">E-mail</label>
+					<input type="email" class="form-control" ng-model="userSession.email" name="email" id="email" placeholder="E-mail" required />
+					<p class="help-block" ng-show="emailFieldForm.email.$invalid && !emailFieldForm.email.$pristine ">Email is required</p>
+			</ng-form>
 		</div>
-	</div>
-	<div class="form-group" >
-		<label for="password" class="col-sm-2 control-label">Password</label>
-		<div class="col-sm-10">
-			<input type="password" class="form-control" ng-model="userSession.Password" id="password" placeholder="Password"  ng-keyup="keyPress($event);" required/>
+		<div class="form-group" ng-class="{ 'has-error' : passwordFieldForm.password.$invalid && !passwordFieldForm.password.$pristine }">
+			<ng-form name="passwordFieldForm">
+				<label for="password" class=" control-label">Password</label>
+					<input type="password" class="form-control" ng-model="userSession.password" name="password" id="password" placeholder="Password" required/>
+					<p class="help-block" ng-show="passwordFieldForm.password.$invalid && !passwordFieldForm.password.$pristine ">Password is required</p>
+			</ng-form>
 		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
+		<div class="form-group">
 	         <button type="button"  class="btn btn-success"
-	           value="Save" title="Save" ng-click="saveUserProfile()" ng-disabled="!editProfileForm.$valid">
+	           value="Save" title="Save" ng-click="updateUserProfile()" ng-disabled="!editProfileForm.$valid">
 	           <span>Save</span>
 	         </button>
-	    </div>
+	     </div>
      </div>
 </form>
-</div>
+

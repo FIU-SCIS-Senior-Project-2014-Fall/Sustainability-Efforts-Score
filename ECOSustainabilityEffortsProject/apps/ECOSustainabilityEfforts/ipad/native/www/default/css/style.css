@@ -1,0 +1,159 @@
+
+/* Stylesheet content from css/style.css in folder common */
+/* --- Background --- */
+body {
+	background: url('../images/background_mini.jpg') fixed;
+	background-repeat: no-repeat;
+	background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  	font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+  	padding-top: 80px;
+  	height:100%;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+/* --- Navbar Style --- */
+.navbar-default-ses {
+  background-color: #62c462;
+  border-color: #51a351;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+.navbar-default-ses .navbar-brand {
+  color: #ffffff;
+}
+.navbar-default-ses .navbar-brand:hover, .navbar-default-ses .navbar-brand:focus {
+  background-color: #51a351;
+  color: #d1ffed;
+}
+.navbar-default-ses .navbar-nav > li > a {
+  color: #ffffff;
+}
+.navbar-default-ses .navbar-nav > li > a:hover, .navbar-default-ses .navbar-nav > li > a:focus {
+  background-color: #51a351;
+  color: #d1ffed;
+}
+.navbar-default-ses .navbar-nav .active > a, .navbar-default-ses .navbar-nav .active > a:hover, .navbar-default-ses .navbar-nav .active > a:focus {
+  color: #d1ffed;
+  background-color: #51a351;
+}
+.navbar-default-ses .navbar-nav .open > a, .navbar-default-ses .navbar-nav .open > a:hover, .navbar-default-ses .navbar-nav .open > a:focus {
+  color: #d1ffed;
+  background-color: #51a351;
+}
+.navbar-default-ses .navbar-nav .open > a .caret, .navbar-default-ses .navbar-nav .open > a:hover .caret, .navbar-default-ses .navbar-nav .open > a:focus .caret {
+  border-top-color: #d1ffed;
+  border-bottom-color: #d1ffed;
+}
+.navbar-default-ses .navbar-nav > .dropdown > a .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+.navbar-default-ses .navbar-nav > .dropdown > a:hover .caret, .navbar-default-ses .navbar-nav > .dropdown > a:focus .caret {
+  border-top-color: #d1ffed;
+  border-bottom-color: #d1ffed;
+}
+.navbar-default-ses .navbar-toggle {
+  border-color: #ffffff;
+}
+.navbar-default-ses .navbar-toggle:hover, .navbar-default-ses .navbar-toggle:focus {
+  background-color: #51a351;
+}
+.navbar-default-ses .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .navbar-default-ses .navbar-nav .open .dropdown-menu > li > a {
+    color: #ffffff;
+  }
+  .navbar-default-ses .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default-ses .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #d1ffed;
+    background-color: #51a351;
+  }
+}
+
+
+
+/* --- Forms --- */
+.form-ses {
+  max-width:500px;
+  padding: 20px;
+  background: rgb(240,247,230); /* for IE */
+  background: rgba(240,247,230,0.50);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+}
+
+.form-ses-lg {
+  max-width:700px;
+  padding: 20px;
+  background: rgb(240,247,230); /* for IE */
+  background: rgba(240,247,230,0.50);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+}
+
+/* ---Home Page --- */
+
+h1 {
+  font-family: 'Verdana', serif;
+  font-style: oblique;
+  font-size:70px;
+  color:#829b27;
+}
+
+h3 {
+  font-family: 'Verdana', serif;
+  font-style: oblique;
+  font-size:30px;
+  color:#829b27;
+}
+
+
+.lead {
+	color:#829b27;
+	font-style: italic;
+}
+
+
+/* Custom container */
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+  min-height:100%;
+  color:#eee;
+  overflow:hidden;
+}
+
+.container-full a {
+  color:#efefef;
+  text-decoration:none;
+}
+
+.v-center {
+  margin-top:7%;
+}
+ 
+ 
+/* --- Log In --- *?
+.form-signin{max-width:330px;margin:0 auto;padding:px;}
+.form-signin .form-signin-heading,.form-signin {margin-bottom:10px;}
+.form-signin .form-control{position:relative;font-size:16px;height:auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:10px;}
+.form-signin .form-control:focus{z-index:2;}
+.form-signin input[type="text"]{margin-bottom:-1px;border-bottom-left-radius:0;border-bottom-right-radius:0;}
+.form-signin input[type="password"]{margin-bottom:10px;border-top-left-radius:0;border-top-right-radius:0;}
+.account-wall{margin-top:20px;background-color:#f7f7f7;-moz-box-shadow:0 2px 2px rgba(0,0,0,0.3);-webkit-box-shadow:0 2px 2px rgba(0,0,0,0.3);box-shadow:0 2px 2px rgba(0,0,0,0.3);padding:40px 0 20px;}
+.login-title{color:#555;font-size:18px;font-weight:400;display:block;}
+.profile-img{width:96px;height:96px;display:block;-moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50%;margin:0 auto 10px;}
+.need-help{margin-top:10px;}
+

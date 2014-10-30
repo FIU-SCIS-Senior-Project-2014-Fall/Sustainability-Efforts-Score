@@ -1,15 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-    COPYRIGHT LICENSE: This information contains sample code provided in source code form. You may copy, modify, and distribute
-    these sample programs in any form without payment to IBM® for the purposes of developing, using, marketing or distributing
-    application programs conforming to the application programming interface for the operating platform for which the sample code is written.
-    Notwithstanding anything to the contrary, IBM PROVIDES THE SAMPLE SOURCE CODE ON AN "AS IS" BASIS AND IBM DISCLAIMS ALL WARRANTIES,
-    EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OR CONDITIONS OF MERCHANTABILITY, SATISFACTORY QUALITY,
-    FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT. IBM SHALL NOT BE LIABLE FOR ANY DIRECT,
-    INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR OPERATION OF THE SAMPLE SOURCE CODE.
-    IBM HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS OR MODIFICATIONS TO THE SAMPLE SOURCE CODE.
-  
- -->
 <html>
    	<head>
    		<meta charset="UTF-8">
@@ -18,16 +7,29 @@
    		
    		<script>window.$ = window.jQuery = WLJQ;</script>
 
-   		<!-- bootstrap css -->
+   		<!-- vendor css -->
    		<link rel="stylesheet" href="vendors/bootstrap-3.2.0-dist/css/bootstrap.min.css" >
    		<link rel="stylesheet" href="vendors/bootstrap-3.2.0-dist/css/bootstrap-theme.min.css" >
+
+   		<link rel="stylesheet" href="vendors/DataTables-1.10.3/media/css/jquery.dataTables.min.css" >
+   		<link rel="stylesheet" href="vendors/DataTables-1.10.3/extensions/Responsive/css/dataTables.responsive.css" >
+
    		<link rel="stylesheet" href="css/main.css">
    		<link rel="stylesheet" href="css/style.css">
 
-   		<!-- angularjs and bootstrap scripts -->
+   		<!-- vendor scripts -->
 	    <script src="vendors/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
-	    <script src="vendors/angular-1.2.25/angular-1.2.25/angular.min.js"></script>
-	    <script src="vendors/angular-1.2.25/angular-1.2.25/angular-route.min.js"></script>
+
+	    <script src="vendors/DataTables-1.10.3/media/js/jquery.js"></script>  
+	    <script src="vendors/DataTables-1.10.3/media/js/jquery.dataTables.min.js"></script>  
+	    <script src="vendors/DataTables-1.10.3/extensions/Responsive/js/dataTables.responsive.min.js"></script>  
+
+	    <script src="vendors/angular-1.2.25/angular-1.2.25/angular.js"></script>
+	    <script src="vendors/angular-1.2.25/angular-1.2.25/angular-route.js"></script>  
+	    		
+	    <script src="vendors/angular-datatables-master/dist/angular-datatables.min.js"></script>  
+
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 
    		<!-- application scripts: change to requirejs-->
    		<script src="js/app.js"></script>
@@ -37,21 +39,24 @@
    		<script src="js/controllers/userHome.js"></script>
    		<script src="js/controllers/newUser.js"></script>
    		<script src="js/controllers/editProfile.js"></script>
+   		<script src="js/controllers/recycleLocatioNearBy.js"></script>
    		<script src="js/controllers/newGroup.js"></script>
-   		<script src="js/controllers/editGroupProfile.js"></script>
-   		
-   		<base href="/ECOSustainabilityEffortsProject/apps/services/preview/ECOSustainabilityEfforts/common/0/default/index.html#/" />
+   		<script src="js/controllers/updateGroupProfile.js"></script>
+   		<script src="js/controllers/joinGroup.js"></script>
+   		<script src="js/controllers/joinedGroups.js"></script>
+   		<script src="js/controllers/joinedGroupUsers.js"></script>
+   		<script src="js/controllers/myGroups.js"></script>
+   		<script src="js/controllers/groupUsers.js"></script>
+   		<script src="js/controllers/newContest.js"></script>
    	</head>
     <body style="display:none;">
    		<div ng-controller="loginController">
-      		<div class="container" ng-view></div>
+      		<div class="container" ng-view ng-cloak></div>
 		
 	   		<script src="js/initOptions.js"></script>
 	   		<script src="js/main.js"></script>
 	   		<script src="js/messages.js"></script>
    		</div>
-   		
 
-   		
    	</body>
 </html>
