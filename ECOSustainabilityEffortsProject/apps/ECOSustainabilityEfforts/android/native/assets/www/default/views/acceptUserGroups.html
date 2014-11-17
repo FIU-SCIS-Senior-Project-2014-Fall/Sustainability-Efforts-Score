@@ -1,0 +1,42 @@
+<div ng-include="'views/bootstrap-navbar.html'"></div>
+
+<div class="table-container">
+	<table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" width="100%">
+		<thead>
+		    <tr>
+		        <th>Group Name</th>
+		        <th>E-mail</th>
+		        <th>Address 1</th>
+		        <th>Address 2</th>
+		        <th>City</th>
+		        <th>State</th>
+		        <th>Zip Code</th>
+		        <th>Country</th>
+		        <th>Owner Name</th>
+		    </tr>
+		</thead>
+		<tbody>
+		    <tr ng-repeat="group in groups" ng-click="clickGroup(group);">
+		    	<td>{{group.groupName}}</td>
+		    	<td>{{group.email}}</td>
+		    	<td>{{group.address1}}</td>
+		    	<td>{{group.address2}}</td>
+		    	<td>{{group.city}}</td>
+		    	<td>{{group.state}}</td>
+		    	<td>{{group.zipcode}}</td>
+		    	<td>{{group.country}}</td>
+		    	<td>{{group.firstName}} {{group.lastName}}</td>
+		    </tr>
+	    </tbody>
+	</table>
+
+	<div>
+		<label>You have selected: {{ selectedGroupName }}</label>
+	</div>
+	
+	<div class="pull-right">
+		<button type="button" class="btn btn-success" value="Members" id="requestGroupUsersButton" ng-click="requestGroupUsers()">
+			<span class="fa fa-users fa-fw"></span>&nbsp;Requests
+		</button>
+	</div>
+</div>

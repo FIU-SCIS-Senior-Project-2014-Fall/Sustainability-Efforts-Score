@@ -1,0 +1,16 @@
+
+/* Stylesheet content from vendors/animate.css-master/source/sliding_exits/slideOutLeft.css in folder common */
+@keyframes slideOutLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translateX(-100%);
+  }
+}
+
+.slideOutLeft {
+  animation-name: slideOutLeft;
+}

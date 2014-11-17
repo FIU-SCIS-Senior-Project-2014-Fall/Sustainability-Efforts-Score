@@ -4,7 +4,7 @@
 
 app.controller(
 	'editProfileController',
-	function($scope, getUserDetailsFactory, updateUserProfileFactory){
+	function($scope, $timeout, getUserDetailsFactory, updateUserProfileFactory){
 		console.log('editProfileController');
 			
 		$scope.init = function(){
@@ -28,7 +28,7 @@ app.controller(
 			
 			console.log('updating user profile');
 			
-			updateUserProfileFactory($scope.userSession.userName, $scope.userSession.firstName, $scope.userSession.lastName, $scope.userSession.email, $scope.userSession.password).then
+			updateUserProfileFactory($scope.userSession.userID, $scope.userSession.userName, $scope.userSession.firstName, $scope.userSession.lastName, $scope.userSession.email, $scope.userSession.password).then
 			(
 				function(session){
 					$scope.successMessages = 'Profile has been updated!';

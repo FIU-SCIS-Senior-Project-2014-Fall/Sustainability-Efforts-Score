@@ -5,40 +5,30 @@ app.controller(
 	function($scope, $location, $timeout, createUserFactory) {
 		console.log('newUserController');
 			
-		$scope.submitNewUser = function(firstName, lastName, userName, email, password)	{
+		$scope.submitNewUser = function(firstName, lastName, userName, password, email)	{
 			console.log('submit new user');
-			
-			console.log('firstName: ' + firstName);
-			
-			console.log('lastName: ' + lastName);
-
-			console.log('userName: ' + userName);
-
-			console.log('email: ' + email);
-
-			console.log('password: ' + password);
 
 			createUserFactory(firstName, lastName, userName,  password, email).then (
-				function(session) {
+				
+				function(session){
 					console.log('createUserFactory onSuccess');
-					
 					$scope.session = session;
-					
-					$scope.errorMsg = '';
-					
-					$timeout(
-						function() {
-								$location.path('/login');
-						}
-					);
+					$scope.successMessages = 'User Account has been created! Please log in to start saving the planet!';
+					$scope.errorMessages = null;
 				},
-				function(error)	{
+				function(error){
 					console.log('createUserFactory onFailure');
-					
-					$scope.errorMsg = 'Could Not Create User';
+					$scope.successMessages = null;	
+					$scope.errorMessages = 'There was a problem creating your account. Please try again.';
 				}
 			);
+				
+			$timeout(function() {
+		        $scope.successMessages = null;
+		        $scope.errorMessages = null;
+		      }, 5000);
 		};
+		
 	}
 	
 );

@@ -1,0 +1,16 @@
+
+/* Stylesheet content from vendors/animate.css-master/source/zooming_entrances/zoomIn.css in folder common */
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  animation-name: zoomIn;
+}

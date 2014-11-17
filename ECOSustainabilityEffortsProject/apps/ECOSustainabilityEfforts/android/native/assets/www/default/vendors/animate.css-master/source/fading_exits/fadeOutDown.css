@@ -1,0 +1,16 @@
+
+/* Stylesheet content from vendors/animate.css-master/source/fading_exits/fadeOutDown.css in folder common */
+@keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.fadeOutDown {
+  animation-name: fadeOutDown;
+}

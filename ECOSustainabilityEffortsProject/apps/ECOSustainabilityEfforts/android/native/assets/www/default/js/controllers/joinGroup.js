@@ -2,7 +2,7 @@
 /* JavaScript content from js/controllers/joinGroup.js in folder common */
 app.controller(
 	'joinGroupController',
-	function($scope, $location, $timeout, getGroupsNotMemberOfFactory, DTOptionsBuilder, globalVariablesFactory){
+	function($scope, $location, $timeout, getGroupsNotMemberOfFactory, createUserGroupRequestFactory, DTOptionsBuilder, globalVariablesFactory){
 		console.log('joinGroupController');
 		
 		$scope.init = function() {
@@ -28,23 +28,42 @@ app.controller(
 		
 		$scope.init();
 		
-		$scope.requestGroups = function(group) {
-			console.log('requestGroup');
+		$scope.clickGroup = function(group) {
+			console.log('clickGroup');
+
+			console.log(group);
 			
-			console.log(group.groupID);
+			$scope.selectedGroup = group;
+
+			$scope.selectedGroupName = group.groupName;
 		}
 		
-		$scope.requestGroupUsers = function(group) {
+		$scope.requestGroup = function() {
+			console.log('requestGroup');
+			
+			console.log($scope.selectedGroup.groupID);
+			
+			createUserGroupRequestFactory($scope.selectedGroup.groupID).then (
+				function(session) {
+					console.log('getGroupsNotMemberOfFactory onSuccess');
+				},
+				function(error) {
+					console.log('getGroupsNotMemberOfFactory onFailure');
+				}
+			);
+		}
+		
+		$scope.requestGroupUsers = function() {
 			console.log('requestGroupUsers');
 			
-			console.log(group.groupID);
+			console.log($scope.selectedGroup.groupID);
 			
 			console.log($location.path());
 
+			globalVariablesFactory.sharedObject.groupID = $scope.selectedGroup.groupID;
+			
 			$timeout(
 				function() {
-					globalVariablesFactory.sharedObject.groupID = group.groupID;
-					
 					$location.path('/groupUsers');
 
 					console.log($location.path());

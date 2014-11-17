@@ -4,7 +4,7 @@
 
 app.controller(
 	'newGroupController',
-	function($scope, getUserDetailsFactory, createNewGroupFactory){
+	function($scope, $timeout, getUserDetailsFactory, createNewGroupFactory, globalVariablesFactory, getCountriesFactory, getStatesFactory, $timeout){
 		console.log('newGroupController');
 			
 		$scope.init = function(){
@@ -18,6 +18,20 @@ app.controller(
 					console.log('Error');					
 					$scope.errorMessages = 'There was a problem loading the group information. Please try again';
 				}
+			);
+
+			getCountriesFactory().then(
+					
+				function(session){
+					console.log('loading countries');
+					$scope.countries = session.invocationResult.resultSet;
+					console.log($scope.countries);
+					console.log('countries loaded');
+				},
+				function(error){
+					$scope.errorMessages = 'could not load countries';
+				}
+			
 			);
 		};
 		
@@ -37,10 +51,10 @@ app.controller(
 				$scope.group.address2 = null;
 			if($scope.group.city == undefined)
 				$scope.group.city = null;
-			if($scope.group.state == undefined)
-				$scope.group.state = null;
-			if($scope.group.country == undefined)
-				$scope.group.country = null;
+			if($scope.state == undefined)
+				$scope.state = null;
+			if($scope.country == undefined)
+				$scope.country = null;
 			if($scope.group.zip == undefined)
 				$scope.group.zip = null;
 			if($scope.group.geoTag == undefined)
@@ -49,9 +63,9 @@ app.controller(
 			if($scope.group.radius == undefined)
 				$scope.group.radius = null;
 
-			createNewGroupFactory($scope.group.name, $scope.userSession.userID, $scope.group.email, 
+			createNewGroupFactory($scope.group.name, $scope.group.email, 
 									$scope.group.address1, $scope.group.address2, $scope.group.city, 
-									$scope.group.state, $scope.group.country, $scope.group.zip, 
+									$scope.state, $scope.country, $scope.group.zip, 
 									$scope.group.geoTag, $scope.group.radius).then(		
 					function(session){
 						$scope.errorMessages = null;
@@ -67,6 +81,22 @@ app.controller(
 		        $scope.successMessages = null;
 		        $scope.errorMessages = null;
 		      }, 3000);
+
+		}
+		
+		$scope.getStates = function(country){
+			getStatesFactory(country).then(
+				function(session){
+					console.log('loading states');
+					$scope.states = session.invocationResult.resultSet;
+					console.log($scope.states);
+					console.log('states loaded');
+				},
+				function(error){
+					$scope.errorMessages = 'could not load states';
+				}
+		
+			);
 
 		}
 	}	

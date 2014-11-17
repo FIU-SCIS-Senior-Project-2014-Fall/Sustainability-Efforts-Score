@@ -27,24 +27,28 @@ app.controller(
 		}
 		
 		$scope.init();
-		
-		$scope.requestGroups = function(group) {
-			console.log('requestGroup');
+
+		$scope.clickGroup = function(group) {
+			console.log('clickGroup');
+
+			console.log(group);
 			
-			console.log(group.groupID);
+			$scope.selectedGroup = group;
+
+			$scope.selectedGroupName = group.groupName;
 		}
 		
-		$scope.requestGroupUsers = function(group) {
+		$scope.requestGroupUsers = function() {
 			console.log('requestGroupUsers');
 			
-			console.log(group.groupID);
+			console.log($scope.selectedGroup.groupID);
 			
 			console.log($location.path());
 
+			globalVariablesFactory.sharedObject.groupID = $scope.selectedGroup.groupID;
+			
 			$timeout(
 				function() {
-					globalVariablesFactory.sharedObject.groupID = group.groupID;
-					
 					$location.path('/joinedGroupUsers');
 
 					console.log($location.path());
@@ -55,20 +59,21 @@ app.controller(
 		$scope.updateGroupProfile = function(group) {
 			console.log('updateGroupProfile');
 			
-			console.log(group.myGroupID);
+			console.log($scope.selectedGroup.groupID);
+			
+			globalVariablesFactory.sharedObject.myGroupID = $scope.selectedGroup.groupID;
 			
 			console.log($location.path());
 
 			$timeout(
 				function() {
-					globalVariablesFactory.sharedObject.myGroupID = group.groupID;
-					
 					$location.path('/updateGroupProfile');
 
 					console.log($location.path());
 				}
 			);
 		}
+
 	}	
 );
 

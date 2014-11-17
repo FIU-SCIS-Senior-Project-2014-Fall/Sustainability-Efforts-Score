@@ -12614,12 +12614,9 @@ __DeviceContextTransmission = function() {
 		return self.writeNumber( (value ? 1 : 0) , 1);
 	};
 	
-	// num should be >= 0
+	//Calculates the minimum number of bits required to store 'num'
 	this.getNumBitsToEncode = function(num) {
-		if (num == 0)
-			return 0;
-		
-		return Math.ceil(Math.log(num) / Math.LN2);
+		return Math.floor(Math.log(num + 1) / Math.LN2);
 	};	
 
 };

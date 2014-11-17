@@ -1,0 +1,16 @@
+
+/* Stylesheet content from vendors/animate.css-master/source/sliding_entrances/slideInRight.css in folder common */
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    visibility: visible;
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.slideInRight {
+  animation-name: slideInRight;
+}

@@ -1,0 +1,16 @@
+
+/* Stylesheet content from vendors/animate.css-master/source/sliding_exits/slideOutRight.css in folder common */
+@keyframes slideOutRight {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translateX(100%);
+  }
+}
+
+.slideOutRight {
+  animation-name: slideOutRight;
+}

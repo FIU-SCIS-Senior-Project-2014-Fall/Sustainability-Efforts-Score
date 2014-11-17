@@ -1,0 +1,17 @@
+
+/* Stylesheet content from vendors/animate.css-master/source/bouncing_exits/bounceOutRight.css in folder common */
+@keyframes bounceOutRight {
+  20% {
+    opacity: 1;
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(2000px, 0, 0);
+  }
+}
+
+.bounceOutRight {
+  animation-name: bounceOutRight;
+}

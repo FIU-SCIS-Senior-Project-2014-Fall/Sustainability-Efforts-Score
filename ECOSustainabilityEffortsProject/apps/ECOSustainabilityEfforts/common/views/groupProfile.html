@@ -1,10 +1,10 @@
-<div ng-include src="'views/navbar-app.html'"></div>
-
-<div id="messages" class="alert alert-success" data-ng-show="successMessages" data-ng-bind="successMessages"></div>
-<div id="messages" class="alert alert-danger" data-ng-show="errorMessages" data-ng-bind="errorMessages"></div>
+<div ng-include="'views/bootstrap-navbar.html'"></div>
 
 <form class="form-horizontal" name="groupProfileForm" role="form">
-	<div class="container form-ses">
+	<div class="container">
+	<div class="form-ses-lg">
+		<div id="messages" class="alert alert-success" data-ng-show="successMessages" data-ng-bind="successMessages"></div>
+		<div id="messages" class="alert alert-danger" data-ng-show="errorMessages" data-ng-bind="errorMessages"></div>
 		<div class="form-group" ng-class="{ 'has-error' : groupNameFieldForm.groupName.$invalid && !groupNameFieldForm.groupName.$pristine }">
 			<ng-form name="groupNameFieldForm">
 				<label for="groupName" class="control-label">Group Name</label>
@@ -22,30 +22,30 @@
 		<div class="form-group" >
 			<ng-form name="geoTagFieldForm">
 				<div class="row">
-					<div class="col-md-2 col-lg-2">
-						<span><input type="checkbox" class="control-checkbox" ng-model="group.geoTag" name="geoTag" id="geoTag"/></span>
-						<label for="geoTag" class="control-label">Geo Tag Based</label>
+					<div class="col-md-4 col-lg-4">
+						<input type="checkbox" class="control-checkbox" ng-model="group.geoTag" name="geoTag" id="geoTag"/>
+						<label for="geoTag" class="control-label" >Geo Tag Based</label>
 					</div>
-				</div>
-				<div class="row">
-						<label for="radius" class="control-label">Radius in Miles</label>
-						<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3">
-							<input type="number" class="form-control" ng-model="group.radius" ng-disabled="!group.geoTag" name="radius" id="radius" placeholder="Radius"/>
-						</div>
+						
+					<div class="col-md-4 col-lg-4">
+					    <label for="radius" class="control-label">Radius in Miles</label>
+						<input type="number" class="form-control" ng-model="group.radius" ng-disabled="!group.geoTag" name="radius" id="radius" placeholder="Radius"/>
+					</div>
+					<div class="col-md-4 col-lg-4">
+						<label for="zip" class="control-label">Zip Code</label>
+					    <input type="text" class="form-control" ng-model="group.zip" ng-disabled="!group.geoTag" name="zip" id="zip" placeholder="Zip Code"/>
+			    	</div>
 				</div>
 				<div class="row">
 			    	<div class="col-md-6 col-lg-6">
 						<label for="address1" class="control-label">Address1</label>
 					    <input type="text" class="form-control" ng-model="group.address1" ng-disabled="!group.geoTag" name="adress1" id="address1" placeholder="Address1"/>
 					</div>
-					<div class="col-md-3 col-lg-3">
+					<div class="col-md-6 col-lg-6">
 						<label for="address2" class="control-label">Address2</label>
 					    <input type="text" class="form-control" ng-model="group.address2" ng-disabled="!group.geoTag" name="adress2" id="address2" placeholder="Apt/Suite"/>
 			    	</div>
-			    	<div class="col-md-3 col-lg-3">
-						<label for="zip" class="control-label">Zip Code</label>
-					    <input type="text" class="form-control" ng-model="group.zip" ng-disabled="!group.geoTag" name="zip" id="zip" placeholder="Zip Code"/>
-			    	</div>
+
 			    </div>
 			    <div class="row">
 			    	<div class="col-md-4 col-lg-4">
@@ -54,14 +54,17 @@
 					</div>
 					<div class="col-md-4 col-lg-4">
 						<label for="state">State</label>
-					    <select class="form-control" ng-model="group.state" ng-disabled="!group.geoTag" name="state" id="state">
-					    	<ng-option value="" disabled selected>Select Country</option>
-						</select>
+					    <select class="form-control" ng-model="state" ng-disabled="!group.geoTag" name="state" id="state"
+					    	ng-options="state.state_id as state.state_name for state in states"
+					    	>
+						</select>Select State
 					</div>
 					<div class="col-md-4 col-lg-4">
 						<label for="country">Country</label>
-						<select class="form-control" ng-model="group.country" ng-options="color.name for color in colors" ng-disabled="!group.geoTag" name="country" id="country">
-							<ng-option value="" disabled selected>Select State>
+						<select class="form-control" ng-model="country" ng-disabled="!group.geoTag" name="country" id="country"
+							ng-change="getStates(country)"
+							ng-options="country.countries_id as country.countries_name for country in countries"
+							>
 						</select>
 					</div>
 			    </div>
@@ -70,10 +73,10 @@
 		</div>	
 		
 		<div class="form-group">
-	         <button type="button"  class="btn btn-success"
-	           value="Save" title="Save" ng-click="createNewGroupProfile()" ng-disabled="!groupProfileForm.$valid">
-	           <span>Save</span>
+	         <button type="button"  class="btn btn-success" value="Save" title="Save" ng-click="createNewGroupProfile()" ng-disabled="!groupProfileForm.$valid">
+	           <span class="fa fa-save fa-fw"></span>&nbsp;Save
 	         </button>
 	    </div>
+	</div>
 	</div>
 </form>

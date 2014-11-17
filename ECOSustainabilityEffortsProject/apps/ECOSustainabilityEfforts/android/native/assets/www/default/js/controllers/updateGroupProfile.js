@@ -1,9 +1,8 @@
 
 /* JavaScript content from js/controllers/updateGroupProfile.js in folder common */
-
 app.controller(
 	'updateGroupProfileController',
-	function($scope, getGroupProfileFactory, updateGroupProfileFactory, globalVariablesFactory){
+	function($scope, getGroupProfileFactory, updateGroupProfileFactory, globalVariablesFactory, getCountriesFactory, getStatesFactory, $timeout){
 		console.log('updateGroupProfileController');
 			
 		$scope.init = function(){
@@ -12,7 +11,9 @@ app.controller(
 			getGroupProfileFactory().then(
 				function(session){
 					$scope.group = session.invocationResult.resultSet[0];
-					console.log($scope.group.zipcode);
+					$scope.country = $scope.group.countryID;
+					$scope.state = $scope.group.stateID;
+					console.log($scope.group);
 				},
 				function(error){
 					console.log('Error');
@@ -20,6 +21,20 @@ app.controller(
 					$scope.errorMessages = 'Could Not Load Session';
 				}
 			);
+			
+			getCountriesFactory().then(
+					
+					function(session){
+						console.log('loading countries');
+						$scope.countries = session.invocationResult.resultSet;
+						console.log($scope.countries);
+						console.log('countries loaded');
+					},
+					function(error){
+						$scope.errorMessages = 'could not load countries';
+					}
+				
+				);
 		};
 		
 		$scope.init();
@@ -30,7 +45,7 @@ app.controller(
 			//validate address!!!
 
 			console.log($scope.group);
-			console.log($scope.group.zipcode);
+			console.log($scope.country);
 			
 			if($scope.group.address1 == undefined)
 				$scope.group.address1 = null;
@@ -38,10 +53,10 @@ app.controller(
 				$scope.group.address2 = null;
 			if($scope.group.city == undefined)
 				$scope.group.city = null;
-			if($scope.group.stateID == undefined)
-				$scope.group.stateID = null;
-			if($scope.group.countryID == undefined)
-				$scope.group.countryID = null;
+			if($scope.state == undefined)
+				$scope.state = null;
+			if($scope.country == undefined)
+				$scope.country = null;
 			if($scope.group.zipcode == undefined)
 				$scope.group.zipcode = null;
 			if($scope.group.geoTag == undefined)
@@ -49,11 +64,10 @@ app.controller(
 			else $scope.group.geoTag = 1;
 			if($scope.group.radius == undefined)
 				$scope.group.radius = null;
-			
 
-			updateGroupProfileFactory($scope.group.groupID, $scope.group.groupName, $scope.group.userID, $scope.group.email, 
+			updateGroupProfileFactory($scope.group.groupID, $scope.group.groupName, $scope.group.email, 
 									$scope.group.address1, $scope.group.address2, $scope.group.city, 
-									$scope.group.stateID, $scope.group.countryID, $scope.group.zipcode, 
+									$scope.state, $scope.country, $scope.group.zipcode, 
 									$scope.group.geoTag, $scope.group.geoTagRadius).then(		
 				
 				function(session){
@@ -74,7 +88,24 @@ app.controller(
 		      }, 3000);
 
 		}
+		
+		$scope.getStates = function(country){
+			getStatesFactory(country).then(
+				function(session){
+					console.log('loading states');
+					$scope.states = session.invocationResult.resultSet;
+					console.log($scope.states);
+					console.log('states loaded');
+				},
+				function(error){
+					$scope.errorMessages = 'could not load states';
+				}
+		
+			);
+
+		}
 	}	
 );
+
 
 

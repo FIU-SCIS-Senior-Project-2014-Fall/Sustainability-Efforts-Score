@@ -1,6 +1,7 @@
-var app = angular.module('App', ['ngRoute', 'datatables']);
+var app = angular.module('App', ['ngRoute', 'datatables', 'tc.chartjs', 'ui.bootstrap']);
 
 var busyIndicator = new WL.BusyIndicator('content');
+
 
 app.factory(
 	'busyIndicatorFactory',
@@ -24,10 +25,6 @@ app.config(
 		{
 			templateUrl:'views/home.html',
 			controller: 'homeController'
-		}).when(
-		'/login',
-		{
-			templateUrl:'views/login.html'
 		}).when(
 		'/userHome',
 		{
@@ -83,6 +80,51 @@ app.config(
 		{
 			templateUrl:'views/groupUsers.html',
 			controller: 'groupUsersController'
+		}).when(
+		'/newMaterial',
+		{
+			templateUrl:'views/newMaterial.html',
+			controller: 'newMaterialController'
+		}).when(
+		'/materials',
+		{
+			templateUrl:'views/materials.html',
+			controller: 'materialsController'
+		}).when(
+		'/items',
+		{
+			templateUrl:'views/items.html',
+			controller: 'itemsController'
+		}).when(
+		'/newItemStepOne',
+		{
+			templateUrl:'views/newItemStepOne.html',
+			controller: 'newItemStepOneController'
+		}).when(
+		'/newItemDuplicates',
+		{
+			templateUrl:'views/newItemDuplicates.html',
+			controller: 'newItemDuplicatesController'
+		}).when(
+		'/newItemStepTwo',
+		{
+			templateUrl:'views/newItemStepTwo.html',
+			controller: 'newItemStepTwoController'
+		}).when(
+		'/acceptUserGroups',
+		{
+			templateUrl:'views/acceptUserGroups.html',
+			controller: 'acceptUserGroupsController'
+		}).when(
+		'/acceptUserUsers',
+		{
+			templateUrl:'views/acceptUserUsers.html',
+			controller: 'acceptUserUsersController'
+		}).when(
+		'/recycle',
+		{
+			templateUrl:'views/recycle.html',
+			controller: 'recycleController'
 		}).when(
 		'/newContest',
 		{

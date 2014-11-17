@@ -1,5 +1,6 @@
-<div ng-include src="'views/navbar-app.html'"></div>
+<div ng-include="'views/bootstrap-navbar.html'"></div>
 
+<div class="table-container">
 <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" width="100%">
 	<thead>
 	    <tr>
@@ -10,7 +11,7 @@
 	        <th>City</th>
 	        <th>State</th>
 	        <th>Zip Code</th>
-	        <th>country</th>
+	        <th>Country</th>
 	        <th>Owner Name</th>
 	        <th>Owner Email</th>
 	    </tr>
@@ -22,11 +23,12 @@
 	    	<td>{{group.address1}}</td>
 	    	<td>{{group.address2}}</td>
 	    	<td>{{group.city}}</td>
-	    	<td>{{group.state}}</td>
+	    	<td>{{group.stateName}}</td>
 	    	<td>{{group.zipcode}}</td>
-	    	<td>{{group.country}}</td>
+	    	<td>{{group.countryName}}</td>
 	    	<td>{{group.firstName}} {{group.lastName}}</td>
 	    	<td>{{group.ownerEmail}}</td>
 	    </tr>
     </tbody>
 </table>
+</div>

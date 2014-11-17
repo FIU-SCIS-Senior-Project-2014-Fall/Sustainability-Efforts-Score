@@ -1,0 +1,15 @@
+<form class="navbar-form navbar-left" role="form">
+       <div class="form-group">
+	   <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+          <input type="text" class="form-control" ng-model="signedUserName" id="usernameInputField" placeholder="User Name" required autofocus>
+          </div>
+          <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+          <input type="password" class="form-control" ng-model="signedPassword" id="passwordInputField" placeholder="Password" ng-keyup="keyPress($event);" required>
+          </div>
+          <span><button   class="btn btn-success" ng-click="loadUserHome(signedUserName, signedPassword);">
+                &nbsp;Sign in&nbsp;<span class="fa fa-sign-in fa-fw"></span>
+          </button></span>
+       </div>
+ </form>

@@ -70,6 +70,9 @@
        		name="SingleStepAuthAdapter-securityTest">
        		<test realm="SingleStepAuthRealm" isInternalUserID="true"/>
        	</customSecurityTest>
+       	<customSecurityTest name="ECOSustainabilityEffortsSQLAdapter-securityTest">
+       		<test realm="ECOSustainabilityEffortsAuthRealm" isInternalUserID="true"/>
+       	</customSecurityTest>
 	 </securityTests> 
 	
 	<realms>
@@ -118,6 +121,13 @@
 			<parameter name="login-function" value="SingleStepAuthAdapter.onAuthRequired"/>
 			<parameter name="logout-function" value="SingleStepAuthAdapter.onLogout"/>
 		</realm>
+		<realm name="ECOSustainabilityEffortsAuthRealm" loginModule="ECOSustainabilityEffortsLoginModule">
+			<className>
+				com.worklight.integration.auth.AdapterAuthenticator
+			</className>
+			<parameter name="login-function" value="ECOSustainabilityEffortsSQLAdapter.onAuthRequired"/>
+			<parameter name="logout-function" value="ECOSustainabilityEffortsSQLAdapter.onLogout"/>
+		</realm>
 	</realms>
 
 	<loginModules>
@@ -161,6 +171,11 @@
 		</loginModule> -->
     	<loginModule name="AuthLoginModule">
     		<className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+    	</loginModule>
+    	<loginModule name="ECOSustainabilityEffortsLoginModule">
+    		<className>
+    			com.worklight.core.auth.ext.NonValidatingLoginModule
+    		</className>
     	</loginModule>
 	</loginModules>
 
