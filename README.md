@@ -1,2 +1,0 @@
-Sustainability-Efforts-Score
-============================
