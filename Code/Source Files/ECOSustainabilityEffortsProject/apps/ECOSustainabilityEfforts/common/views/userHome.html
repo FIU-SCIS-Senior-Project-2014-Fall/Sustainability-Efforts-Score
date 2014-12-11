@@ -1,0 +1,193 @@
+<div data-ng-include="'views/bootstrap-navbar.html'"></div>
+<div class="container-full">
+   <div class="container" data-ng-controller="statsController">
+  	    <div class="widget-b">
+          <div class="widget-body">
+            <div class="widget-buttons pull-right" data-ng-click="reloadDashboard()" tooltip="Reload Dashboard">
+              <i class="fa fa-refresh"></i>
+            </div>
+            <div class="widget-buttons  pull-right" data-ng-click="refreshDashboard()" tooltip="Refresh Dashboard">
+              <i class="fa fa-repeat"></i>
+            </div>
+            <div class="widget-buttons pull-right" data-ng-click="open( 'sm' )" tooltip="Filter Dashboard">
+              <i class="fa fa-filter"></i>
+            </div>
+            <div class="clearfix"></div>
+	      </div>
+		</div>
+	  <div class="row">
+	      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	        <div class="widget">
+	          <div class="widget-body">
+	            <div class="widget-icon pull-left">
+	              <i class="fa fa-tasks"></i>
+	            </div>
+	            <div class="widget-content pull-left">
+	              <div class="title" data-ng-model="groups">{{ totalGroups.total }} Groups</div>
+	            </div>
+	            <div class="clearfix"></div>
+	          </div>
+	        </div>
+	      </div>
+	      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	        <div class="widget">
+	          <div class="widget-body">
+	            <div class="widget-icon pull-left">
+	              <i class="fa fa-users"></i>
+	            </div>
+	            <div class="widget-content pull-left">
+	              <div class="title" data-ng-model="users">{{ totalUsers.total }} Users</div>
+	            </div>
+	            <div class="clearfix"></div>
+	          </div>
+	        </div>
+	      </div>
+	      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	        <div class="widget">
+	          <div class="widget-body">
+	            <div class="widget-icon pull-left">
+	              <i class="fa fa-recycle"></i>
+	            </div>
+	            <div class="widget-content pull-left">
+	              <div class="title">{{ totalItems.total }} Items</div>
+	            </div>
+	            <div class="clearfix"></div>
+	          </div>
+	        </div>
+	      </div>
+	      
+	  </div>
+    </div>
+
+<script type="text/ng-template" id="filterModal.html">	
+    <div class="modal-body">
+      <tabset justified="true">
+         <tab  heading="Groups">
+            <ul class="customUl">
+                <li data-ng-repeat="group in groupsFilter | filter:group.groupName | orderBy:'groupName'">
+                    <a ng-click="selectedItem.item = group">{{ group.groupName }}</a>
+                </li>
+            </ul>
+			Selected: <b>{{ selectedItem.item.groupName }}</b>
+		 </tab>
+         <tab heading="Users">
+			<ul class="customUl">
+                <li data-ng-repeat="userSel in usersFilter | filter:userSel.userName | orderBy:'userName'">
+                    <a ng-click="selectedItem.item = userSel">{{ userSel.userName }}</a>
+                </li>
+            </ul>
+			Selected: <b>{{ selectedItem.item.userName }} {{ selectedItem.item.firstName }} {{ selectedItem.item.lastName }}</b>
+		 </tab>
+      </tabset>
+	</div>
+	<div>
+	
+	</div>
+	<div class="modal-footer">
+    	<button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+   </div>
+</script>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-lg-6">
+			  <div id="pieCanvas" data-ng-controller="pieChartController">
+				<div class="widget">
+			        <div class="widget-title">
+			            <i>{{ pieChartLabel }}</i> 
+			            <a class="fa fa-repeat pull-right" data-ng-click="pieChartRefresh()" tooltip="Refresh Chart"></a>
+			        </div>
+			         <div class="canvas-container">
+							<canvas data-tc-chartjs-pie data-chart-options="pieOptions" data-chart-data="pieData" data-chart="pieChart" data-ng-click="pieChartClick($event)" auto-legend></canvas>
+				     </div>				
+			     </div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-6">
+			  <div id="lineCanvas" data-ng-controller="barChartController">
+				<div class="widget">
+			        <div class="widget-title">
+			            <i>YTD Overall Activity</i> 
+			            <a class="fa fa-repeat pull-right" data-ng-click="barChartRefresh()" tooltip="Refresh Chart"></a>
+			        </div>
+			       	<div class="canvas-container">
+						<canvas data-tc-chartjs-bar data-chart-options="barOptions" data-chart-data="barData" data-chart="barChart" data-ng-click="barChartClick($event)"></canvas>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+		  <div class="col-md-4 col-lg-4">
+		     <div id="groupScoreboardWidget" data-ng-controller="groupScoreboardController">
+				<div class="widget">
+			        <div class="widget-title">
+			            <i>Top Groups</i> 
+			            <a class="fa fa-repeat pull-right" data-ng-click="groupScoreboardRefresh()" tooltip="Refresh Scoreboard"></a>
+			        </div>
+			        <div class="widget-body medium no-padding">
+			        <input type="text" ng-model="groupSelected" typeahead="group.groupName for group in groupScoreboard | filter:$viewValue | limitTo:5" class="form-control" typeahead-on-select='onSelect($item, $model, $label)'>
+					  <div class="table-responsive" >
+					    <table class="table">
+					      <tbody>
+					        <tr data-ng-repeat="group in groupScoreboard | filter:group.total | limitTo:groupBoardQty | orderBy:'-total'">
+					        	<td>{{ group.groupName }}</td><td>{{ group.total }} pts</td>
+					        </tr>
+					      </tbody>
+					    </table>
+					  </div>
+					</div>
+			        
+				</div>
+			  </div>
+			</div>
+			<div class="col-md-4 col-lg-4">
+			  <div id="userScoreboardWidget" data-ng-controller="userScoreboardController">
+				<div class="widget">
+			        <div class="widget-title">
+			            <i>Top Users</i> 
+			            <a class="fa fa-repeat pull-right" data-ng-click="userScoreboardRefresh()" tooltip="Refresh Scoreboard"></a>
+			        </div>
+			        <div class="widget-body medium no-padding">
+					  <input type="text" ng-model="selected" typeahead="user.userName for user in userScoreboard | filter:$viewValue | limitTo:5" class="form-control" typeahead-on-select='onSelect($item, $model, $label)'>
+					  <div class="table-responsive" >
+					    <table class="table">
+					      <tbody>
+					        <tr data-ng-repeat="user in userScoreboard | filter:user.total | limitTo:userBoarddQty | orderBy:'-total'">
+					        	<td>{{ user.userName }}</td><td>{{ user.total }}  pts</td>
+					        </tr>
+					      </tbody>
+					    </table>
+					  </div>
+					</div>
+				</div>
+			  </div>
+			</div>
+			<div class="col-md-4 col-lg-4">
+			  <div id="itemsBoardWidget" data-ng-controller="itemsBoardController">
+				<div class="widget">
+			        <div class="widget-title">
+			            <i>Top Items</i> 
+			            <a class="fa fa-repeat pull-right" data-ng-click="itemsBoardRefresh()" tooltip="Refresh Board"></a>
+			        </div>
+			        <div class="widget-body medium no-padding">
+			        <input type="text" ng-model="selected" typeahead="item.itemName for item in itemsBoard | filter:$viewValue | limitTo:5" class="form-control" typeahead-on-select='onSelect($item, $model, $label)'>
+					  <div class="table-responsive">
+					    <table class="table">
+					      <tbody>
+					      	<tr data-ng-repeat="item in itemsBoard | filter:item.total | limitTo:itemsBoardQty | orderBy:'-total'">
+					        	<td>{{ item.itemName }}</td><td>{{ item.total }}  qty</td>
+					        </tr>
+					      </tbody>
+					    </table>
+					  </div>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+		</div>
+		</div>
+</div>
+

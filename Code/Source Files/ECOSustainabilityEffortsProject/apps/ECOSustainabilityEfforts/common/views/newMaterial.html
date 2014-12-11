@@ -1,0 +1,37 @@
+<div ng-include="'views/bootstrap-navbar.html'"></div>
+
+<form class="form-horizontal" name="newMaterialForm" role="form">
+	<div class="container">
+		<div class="form-ses-lg">
+			<div id="messages" class="alert alert-success" data-ng-show="successMessages" data-ng-bind="successMessages"></div>
+			<div id="messages" class="alert alert-error" data-ng-show="errorMessages" data-ng-bind="errorMessages"></div>
+	
+			<div class="form-group" ng-class="{ 'has-error' : newNameInputFieldForm.newNameInputField.$invalid && !newNameInputFieldForm.newNameInputField.$pristine }">	
+				<ng-form name="newNameInputFieldForm">
+					<label for="newNameInputField" class="control-label">Material name</label>
+					<input type="text" class="form-control" ng-model="newMaterial.name" name="newNameInputField" id="newNameInputField" placeholder="Name" required />
+					<p class="help-block" ng-show="newNameInputFieldForm.newNameInputField.$invalid && !newNameInputFieldForm.newNameInputField.$pristine ">Material Name is required</p>
+				 </ng-form>
+			</div>
+
+			<div class="form-group" >
+				<label for="newDescriptionInputField" class="control-label">Description</label>
+				<input type="text" class="form-control" ng-model="newMaterial.description" id="newDescriptionInputField" placeholder="Description"/>
+			</div>
+
+			<div class="form-group" ng-class="{ 'has-error' : newMeasureInputFieldForm.newMeasureInputField.$invalid && !newMeasureInputFieldForm.newMeasureInputField.$pristine }">
+				<ng-form name="newMeasureInputFieldForm">
+					<label for="newMaterialInputField" class="control-label">Material Measure</label>
+					<input type="text" class="form-control" ng-model="newMaterial.measure" name="newMeasureInputField" id="newMeasureInputField" placeholder="Measure" required />
+					<p class="help-block" ng-show="newMeasureInputFieldForm.newMeasureInputField.$invalid && !newMeasureInputFieldForm.newMeasureInputField.$pristine ">Measure is required</p>
+				 </ng-form>
+			</div>
+
+			<div class="form-group">
+	         <button type="button"  class="btn btn-success pull-right" value="create" name="create" ng-click="submitNewMaterial(newMaterial.name, newMaterial.description, newMaterial.measure)" ng-disabled="!newMaterialForm.$valid">Create Material</button>
+	     	</div>
+		</div>
+	</div>
+</form>
+
+ 	

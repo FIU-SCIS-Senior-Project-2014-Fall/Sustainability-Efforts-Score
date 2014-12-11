@@ -1,0 +1,173 @@
+<div ng-include="'views/bootstrap-navbar.html'"></div>
+
+
+<form class="form-horizontal" name="createContestForm" role="form">
+  <div class="container">
+	<div class=" form-ses-lg">
+		<div class="row">
+			<div class="col-md-8 col-lg-8">
+				<div class="form-group" ng-class="{ 'has-error' : contestNameForm.contestName.$invalid && !contestNameForm.contestName.$pristine}">
+					<ng-form name="contestNameForm">
+						<label for="contestName" class="control-label">Contest Name</label>
+						<input type="text" class="form-control" ng-model="contestName" name="contestName" id="contestName" placeholder="Enter a name" required/>
+						<p class="help-block" ng-show="contestNameForm.contestName.$invalid && !contestNameForm.contestName.$pristine">Contest name is required</p>
+					</ng-form>
+				</div>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="col-md-8 col-lg-8">
+			  <div class="form-group">
+				<label for="prize" class="control-label">Prize</label>
+				<input type="text" class="form-control" ng-model="prize" name="prize" id="prize" placeholder="Enter a prize"/>	
+			  </div>				
+			</div>
+		</div>
+
+		<br><br>
+		
+		<div class="form-group" ng-class="{ 'has-error' : mainGroupForm.selectedMainGroup.$invalid && !mainGroupForm.selectedMainGroup.$pristine}">
+			<ng-form name="mainGroupForm">	
+				<label for="selectedMainGroup">Main Group</label>
+			    <select class="form-control" ng-model="selectedMainGroup" name="selectedMainGroup" id="selectedMainGroup"
+					ng-change="updateListContestGroups(selectedMainGroup)"
+					ng-options="selectedMainGroup.groupName for selectedMainGroup in contestGroups" required>
+				</select>
+				<p class="help-block" ng-show="mainGroupForm.selectedMainGroup.$invalid && !mainGroupForm.selectedMainGroup.$pristine">Main Group is required</p>
+			</ng-form>
+		</div>	
+			
+			<br>
+			
+		<div class="row">
+		  		  <div class="col-md-5 col-lg-5 col-sm-5">
+		  	<div class="form-group">
+			   	 <label for="selectedAvailableGroup">Selected Groups</label>
+			     <select class="form-control" ng-model="selectedAvailableGroup" name="selectedAvailableGroup" id="selectedAvailableGroup"
+				    ng-options="selectedAvailableGroup.groupName for selectedAvailableGroup in availableGroups"
+				    multiple
+				 ></select>
+			 <button type="button"  class="btn btn-success btn-xs"  ng-click="addAllToOtherGroups(availableGroups, selectedContestGroups)">
+			  	 <span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i>&nbsp;&nbsp;&nbsp;</span>
+			 </button>
+			<button type="button" class="btn btn-success btn-xs" ng-click="addToOtherGroups(selectedAvailableGroup, selectedContestGroups, availableGroups)">
+			  	 <span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;&nbsp;</span>
+			 </button>
+			</div>
+		  </div>
+		  <div class="col-md-2 col-lg-2 col-sm-2"></div>
+		  <div class="col-md-5 col-lg-5 col-sm-5">
+		  	<div class="form-group">
+			   	 <label for="selectedGroups">Selected Groups</label>
+			     <select class="form-control" ng-model="selectedGroups" name="selectedGroups" id="selectedGroups"
+				    ng-options="selectedGroups.groupName for selectedGroups in selectedContestGroups"
+				    multiple
+				 ></select>
+		   	 <button type="button"  class="btn btn-danger btn-xs" ng-click="addToOtherGroups(selectedGroups, availableGroups, selectedContestGroups)">
+			  	 <span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-left"></i>&nbsp;&nbsp;&nbsp;</span>
+			 </button>
+			 <button type="button"  class="btn btn-danger btn-xs" ng-click="addAllToOtherGroups(selectedContestGroups, availableGroups)">
+			  	 <span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-left"></i>&nbsp;&nbsp;&nbsp;</span>
+			 </button>
+			</div>
+		  </div>
+		</div>
+		
+		<br><br>
+		
+		
+		<div class="row">
+			<div class="col-md-5 col-lg-5 col-sm-5">
+				<div class="form-group" ng-class="{ 'has-error' : materialForm.material.$invalid && !materialForm.material.$pristine}">
+					<ng-form name="materialForm">	
+						<label for="material">Material Type</label>
+						<select class="form-control" ng-model="material" name="material" id="material"
+						ng-options="material.name for material in materials">
+						</select>
+						<p class="help-block" ng-show="materialForm.material.$invalid && !materialForm.material.$pristine">Material is required</p>
+					</ng-form>
+				</div>	
+			</div>
+			<div class="col-md-2 col-lg-2 col-sm-2"></div>
+			<div class="col-md-3 col-lg-3 col-sm-3">
+		    	<div class="form-group" ng-class="{ 'has-error' : thresholdForm.threshold.$invalid && !thresholdForm.threshold.$pristine}">
+					<ng-form name="thresholdForm">
+						<label for="threshold" class="control-label">Threshold</label>
+						<input type="number" class="form-control" min="1" ng-model="threshold" name="threshold" id="threshold" placeholder="Threshold" required/>
+						<p class="help-block" ng-show="thresholdForm.threshold.$invalid && !thresholdForm.threshold.$pristine">Threshold is required</p>
+					</ng-form>
+				</div>
+			</div>
+			<!-- <div class="col-md-1 col-lg-1 col-sm-1"></div>
+			 <div class="col-md-4 col-lg-4 col-sm-4">
+				<div class="form-group" ng-class="{ 'has-error' : contestEndsForm.ends.$invalid && !contestEndsForm.ends.$pristine}">
+					<ng-form name="contestEndsForm">	
+						<label for="ends">Contest ends when</label>
+						<select class="form-control" ng-model="ends" name="ends" id="ends"
+						ng-options="ends.contestEndsName for ends in contestEnds" required>
+						</select>
+						<p class="help-block" ng-show="contestEndsForm.ends.$invalid && !contestEndsForm.ends.$pristine">Ending criteria is required</p>
+					</ng-form>
+				</div>
+			</div>-->
+		</div>
+		<!--  <div class="row">
+	        <div class="col-md-5 col-lg-5 col-sm-5">
+	        	<div class="form-group" ng-class="{ 'has-error' : dateFromForm.from.$invalid && !dateFromForm.from.$pristine}">
+					<ng-form name="dateFromForm">	
+			            <label for="from" class="control-label">From</label>
+			            <p class="input-group">
+			              <input type="text" class="form-control" name="from" datepicker-popup="{{format}}" ng-model="dateFrom" is-open="openedFrom" min-date="minDateFrom" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+			              <span class="input-group-btn">
+			                <button type="button" class="btn btn-default" ng-click="openFrom($event)"><i class="fa fa-calendar"></i></button>
+			              </span>
+			            </p>
+			            <p class="help-block" ng-show="dateFromForm.from.$invalid && !dateFromForm.from.$pristine">Date is required</p>
+					</ng-form>
+				</div>	
+	        </div>
+	        <div class="col-md-2 col-lg-2 col-sm-2"></div>
+	        <div class="col-md-5 col-lg-5 col-sm-5">
+	        	<div class="form-group" ng-class="{ 'has-error' : dateToForm.to.$invalid && !dateToForm.to.$pristine}">
+					<ng-form name="dateToForm">	
+			            <label for="to" class="control-label">To</label>
+			            <p class="input-group">
+			              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateTo" is-open="openedTo" min-date="minDateTo" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+			              <span class="input-group-btn">
+			                <label></label>
+			                <button type="button" class="btn btn-default" ng-click="openTo($event)"><i class="fa fa-calendar"></i></button>
+			              </span>
+			            </p>
+			            <p class="help-block" ng-show="dateToForm.to.$invalid && !dateToForm.to.$pristine">Date is required</p>
+					</ng-form>
+				</div>	
+	        </div>
+	    </div>-->
+	      <div class="row">
+	      	<div class="col-md-5 col-lg-5 col-sm-5">
+				<div class="form-group">
+					<label for="boundaryType">Boundary Type</label>
+					<select class="form-control" ng-model="boundaryType" name="boundaryType" id="boundaryType"
+					ng-options="boundary.boundaryName for boundary in boundaries">
+					</select>
+				</div>
+			</div>
+			<div class="col-md-2 col-lg-2 col-sm-2"></div>
+	        <div class="col-md-3 col-lg-3 col-sm-3">
+		        <div class="form-group">
+					<label for="radius" class="control-label">Radius in Miles</label>
+					<input type="number" class="form-control" min="1" ng-model="radius" name="radius" id="radius" placeholder="Radius" ng-disabled="boundaryType.boundaryName!='Location'" ng-required="boundaryType.boundaryName=='Location'"/>
+				</div>
+			</div>	
+		</div>
+		<br>
+		
+		<div id="messages" class="alert alert-success" data-ng-show="successMessages" data-ng-bind="successMessages"></div>
+		<div id="messages" class="alert alert-danger" data-ng-show="errorMessages" data-ng-bind="errorMessages"></div>
+		<div class="form-group">
+	         <button type="button"  class="btn btn-success" value="create" title="create" ng-click="createContest()" ng-disabled="!createContestForm.$valid "><span class="fa fa-save fa-fw"></span>&nbsp;Create Contest</button>
+	    </div>
+	</div>
+	</div>
+</form>
+

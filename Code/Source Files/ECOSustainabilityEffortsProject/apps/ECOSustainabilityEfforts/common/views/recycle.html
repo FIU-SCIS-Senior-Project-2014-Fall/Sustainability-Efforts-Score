@@ -1,0 +1,75 @@
+<div ng-include="'views/bootstrap-navbar.html'"></div>
+
+<div class="table-container">
+
+	<table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="table hover order-column row-border" width="100%">
+		<thead>
+		    <tr>
+		        <th>Group Name</th>
+		        <th>E-mail</th>
+		        <th>Owner Name</th>
+		        <th>Owner Email</th>
+		    </tr>
+		</thead>
+		<tbody>
+		    <tr ng-repeat="group in groups" ng-click="clickGroup(group);">
+		    	<td>{{group.groupName}}</td>
+		    	<td>{{group.email}}</td>
+		    	<td>{{group.firstName}} {{group.lastName}}</td>
+		    	<td>{{group.ownerEmail}}</td>
+		    </tr>
+	    </tbody>
+	</table>
+	
+	<table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="table hover order-column row-border" width="100%">
+		<thead>
+		    <tr>
+		        <th>Name</th>
+		        <th>Description</th>
+		        <th>Barcode</th>
+		    </tr>
+		</thead>
+		<tbody>
+		    <tr ng-repeat="item in items" ng-click="clickItem(item);">
+		    	<td>{{item.name}}</td>
+		    	<td>{{item.description}}</td>
+		    	<td>{{item.barcode}}</td>
+		    </tr>
+	    </tbody>
+	</table>
+
+	<div>   
+		<label>Latitude: {{ latitude }}</label>
+	</div>
+
+	<div>   
+		<label>Longitude: {{ longitude }}</label>
+	</div>
+
+	<div>   
+	  <input type="number" class="form-control" min="1" ng-model="quantity" name="quantityInputField" id="quantityInputField" placeholder="Quantity" required />
+	</div>
+
+	<div>
+	    <div id="messages" class="alert alert-success" data-ng-show="successMessages" data-ng-bind="successMessages"></div>
+		<div id="messages" class="alert alert-danger" data-ng-show="errorMessages" data-ng-bind="errorMessages"></div>
+		<div>
+		    <label>You have selected group: {{ selectedGroupName }}</label>
+		</div>
+		
+		<div>
+			<label>You have selected item: {{ selectedItemName }}</label>
+		</div>
+		
+		<div>
+		    <div class="pull-right">
+			<button type="button" class="btn btn-success" value="submitNewRecyclingAction" name="submitNewRecyclingActionButton" ng-click="submitNewRecyclingAction()">
+			<span class="fa fa-save fa-fw"></span>&nbsp;Create Recycling Action
+			</button>
+			</div>
+		</div>		
+	</div>
+	
+</div>
+
+

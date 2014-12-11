@@ -1,0 +1,290 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+	  <div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	      <span class="sr-only">Toggle navigation</span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </button>
+	    <a class="navbar-brand active" href="#">
+	    	<span class="fa fa-recycle fa-lg"></span>&nbsp; Green Efforts
+	    </a>
+	  </div>
+	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	  
+	  <ul class="nav navbar-nav navbar-right">
+
+          <li>
+	          <form class="navbar-form navbar-left" role="form">
+			       <div class="form-group">
+				   	  <div class="input-group">
+				          <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+				          <input type="text" class="form-control" ng-model="signedUserName" id="usernameInputField" placeholder="User Name" required autofocus>
+			          </div>
+			          <div class="input-group">
+				          <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+				          <input type="password" class="form-control" ng-model="signedPassword" id="passwordInputField" placeholder="Password" ng-keyup="keyPress($event);" required>
+			          </div>
+				          <span><button   class="btn btn-success" ng-click="loadUserHome(signedUserName, signedPassword);">
+				                &nbsp;Sign in&nbsp;<span class="fa fa-sign-in fa-fw"></span></button>
+				          </span>	
+			       </div>
+	 			</form>
+	      </li>
+	  	  	
+
+	      
+      </ul>
+      </div>
+  </div>
+</div>
+<div data-ng-show="invalidLoginMessage" data-ng-bind="invalidLoginMessage" ng-style="{color:'red'}"></div>
+<div id="appCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#appCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#appCarousel" data-slide-to="1"></li>
+        <li data-target="#appCarousel" data-slide-to="2"></li>
+        <li data-target="#appCarousel" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+        <img src="images/img1.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Save Trees!</h1>
+              <p class="p1">If every American recycled just one-tenth of their newspapers, we could save about 25 million trees each year.</p>
+              <p>
+					<button type="button" class="btn btn-success btn-lg" onclick="window.open('http://www.recycling-revolution.com/recycling-facts.html')">
+				   	&nbsp;&nbsp; Learn More&nbsp;<span class="fa fa-external-link "></span>&nbsp;
+				   </button>
+			  </p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+        <img src="images/img2.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Save Energy!</h1>
+              <p class="p1">Recycling just one aluminum can saves enough electricity to light a 100-watt bulb for 3 1/2 hours!</p>
+              <p>
+					<button type="button" class="btn btn-success btn-lg" onclick="window.open('http://www.in.gov/idem/recycle/2370.htm')">
+				   	&nbsp;&nbsp; Learn More&nbsp;<span class="fa fa-external-link "></span>&nbsp;
+				   </button>
+			  </p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+        <img src="images/img3.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Recycling Paper</h1>
+              <p class="p1">Every year, Americans throw away enough office and writing paper to build a wall 12 feet high from New York City to Los Angeles.</p>
+              <p>
+					<button type="button" class="btn btn-success btn-lg" onclick="window.open('http://www.gwinnettcb.org/get-engaged/recycling/facts-figures/')">
+				   	&nbsp;&nbsp; Learn More&nbsp;<span class="fa fa-external-link "></span>&nbsp;
+				   </button>
+			  </p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+        <img src="images/img4.jpg" alt="Fourth slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Waste Disposal</h1>
+              <p class="p1">A single quart of motor oil, if disposed of improperly, can contaminate up to 2,000,000 gallons of fresh water. </p>
+              <p>
+					<button type="button" class="btn btn-success btn-lg" onclick="window.open('http://www.recycling-revolution.com/recycling-facts.html')">
+				   	&nbsp;&nbsp; Learn More&nbsp;<span class="fa fa-external-link "></span>&nbsp;
+				   </button>
+			  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#appCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#appCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+<div id="facts" >
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 sub-head">
+                <h2  data-wow-delay="0.3s" class="wow zoomIn animated" ><strong>Keep track of your Green Efforts! </strong></h2>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-lg-4 col-md-4">
+                <div class="media wow bounceInLeft animated" data-wow-delay="0.4s">
+                    <div class="pull-left">
+                        <i class="fa fa-recycle fa-4x  "></i>
+                    </div>
+                    <div>
+                        <h3>We Promote Recycling</h3>
+                        <p class="p2">
+                            Every month, enough glass bottles and jars to fill up a giant skyscraper are thrown out. All of these jars are recyclable! Don't throw them out! Recycle them!
+                        </p>
+
+                    </div>
+                </div>
+                <div class="media wow bounceInLeft animated" data-wow-delay="0.5s">
+                    <div class="pull-left">
+                        <i class="fa fa-leaf fa-4x  "></i>
+                    </div>
+                    <div>
+                        <h3>Eco-Friendly</h3>
+                        <p class="p2">
+                            Trees can take up to 30 years to mature, while sugarcane only takes one year making it a very renewable resource.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="media wow bounceInLeft animated" data-wow-delay="0.6s">
+                    <div class="pull-left">
+                        <i class="fa fa-retweet fa-4x  "></i>
+                    </div>
+                    <div>
+                        <h3>Resource Utilization</h3>
+                        <p class="p2">
+                            Reducing and reusing prevents pollution caused by reducing the need to harvest new raw materials.
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+            
+           <div class="col-lg-4 col-md-4">
+				<form class="form-horizontal" name="newUserForm" role="form">
+					<div class="form-ses" >
+					  <div id="messages" class="alert alert-success" data-ng-show="successMessages" data-ng-bind="successMessages"></div>
+					  <div id="messages" class="alert alert-danger" data-ng-show="errorMessages" data-ng-bind="errorMessages"></div>
+					  <h3 class="text-center login-title">Create  Account</h3>
+						<div class="form-group" data-ng-class="{ 'has-error' : newUserNameForm.newUserName.$invalid && !newUserNameForm.newUserName.$pristine }">	
+							<data-ng-form name="newUserNameForm">
+								<label for="newUserName" class="control-label">Username</label>
+									<input type="text" class="form-control" data-ng-model="newUser.userName" name="newUserName" id="newUserName" placeholder="User Name" required />
+									<p class="help-block" data-ng-show="newUserNameForm.newUserName.$invalid && !newUserNameForm.newUserName.$pristine ">User Name is required</p>
+							 </data-ng-form>
+						</div>
+						<div class="form-group" data-ng-class="{ 'has-error' : newFirstNameForm.newFirstName.$invalid && !newFirstNameForm.newFirstName.$pristine }">
+							<data-ng-form name="newFirstNameForm">
+								<label for="newFirstName" class="control-label">First Name</label>
+									<input type="text" class="form-control" data-ng-model="newUser.firstName" name="newFirstName" id="newFirstName" placeholder="First Name" required />
+									<p class="help-block" data-ng-show="newFirstNameForm.newFirstName.$invalid && !newFirstNameForm.newFirstName.$pristine ">First Name is required</p>
+							 </data-ng-form>
+						</div>
+						<div class="form-group" data-ng-class="{ 'has-error' : newLastNameForm.newLastName.$invalid && !newLastNameForm.newLastName.$pristine }">
+							<data-ng-form name="newLastNameForm">
+								<label for="newLastName" class="control-label">Last Name</label>
+									<input type="text" class="form-control" data-ng-model="newUser.lastName" name="newLastName" id="newLastName" placeholder="Last Name" required />
+									<p class="help-block" data-ng-show="newLastNameForm.newLastName.$invalid && !newLastNameForm.newLastName.$pristine ">Last Name is required</p>
+							 </data-ng-form>
+						</div>
+						<div class="form-group" data-ng-class="{ 'has-error' : newEmailForm.newEmail.$invalid && !newEmailForm.newEmail.$pristine }">
+							 <data-ng-form name="newEmailForm">
+								<label for="newEmail" class="control-label">Email Address</label>
+									<input type="text" class="form-control" data-ng-model="newUser.email" name="newEmail" id="newEmail" placeholder="E-mail" required />
+									<p class="help-block" data-ng-show="newEmailForm.newEmail.$invalid && !newEmailForm.newEmail.$pristine ">Email Address is required</p>
+							 </data-ng-form>
+						</div>
+						<div class="form-group" data-ng-class="{ 'has-error' : newPasswordForm.newPassword.$invalid && !newPasswordForm.newPassword.$pristine }">
+							 <data-ng-form name="newPasswordForm">
+								<label for="newPassword" class="control-label">Password</label>
+									<input type="password" class="form-control" data-ng-model="newUser.password" name="newPassword" id="newPassword" placeholder="Password" required />
+									<p class="help-block" data-ng-show="newPasswordForm.newPassword.$invalid && !newPasswordForm.newPassword.$pristine ">Password is required</p>
+							 </data-ng-form>
+						</div>
+						<div class="form-group">
+				         <button type="button"  class="btn btn-success" value="create" data-ng-click="submitNewUser(newUser.firstName, newUser.lastName, newUser.userName, newUser.password, newUser.email)" data-ng-disabled="!newUserForm.$valid">
+				         <span>Create Account</span>
+				         </button>
+				     	</div>
+					</div>
+				
+				</form>
+            </div>
+           
+            <div class="col-lg-4 col-md-4">
+
+                <div class="media wow bounceInRight animated" data-wow-delay="0.4s">
+                    <div class="pull-left">
+                        <i class="fa fa-trash-o fa-4x  "></i>
+                    </div>
+                    <div>
+                        <h3>Waste Reduction</h3>
+                        <p class="p2">
+                            The construction costs of a paper mill designed to use waste paper is 50 to 80% less than the cost of a mill using new pulp. 
+                        </p>
+
+                    </div>
+                </div>
+                <div class="media wow bounceInRight animated" data-wow-delay="0.5s">
+                    <div class="pull-left">
+                        <i class="fa fa-bolt fa-4x  "></i>
+                    </div>
+                    <div>
+                        <h3>Energy Saving</h3>
+                        <p class="p2">
+                            Recycling plastic saves twice as much energy as burning it in an incinerator. 
+                        </p>
+
+                    </div>
+                </div>
+                <div class="media wow bounceInRight animated" data-wow-delay="0.6s">
+                    <div class="pull-left">
+                        <i class="fa fa-trophy fa-4x  "></i>
+                    </div>
+                    <div>
+                        <h3>Get Rewarded</h3>
+                        <p class="p2">
+                            Participate in Green Contests and you could win prizes!  
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+		<br><br>
+        <div class="row pad-top-botm wow fadeInUp animated" data-wow-delay="0.7s">
+            <div class="col-lg-8 col-md-8 col-sm-8 " >
+                <h3><strong>Why join us?</strong></h3>
+                <p class="p2"><i class="fa fa-star big-icon "></i>
+					Because the environment needs your help!
+                </p>
+                <p class="p2"><i class="fa fa-star big-icon "></i>
+                    Because you can support groups to become greener!
+                </p>
+                <p class="p2"><i class="fa fa-star big-icon "></i>
+                    Because it feels good!
+                </p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 text-center" >
+            	<img src="images/earth.png" alt="Earth" style="max-width:80%;height:80%;">
+            </div>
+
+        </div>
+    </div>
+</div>
+<br><br><br>
+
+<div id="footer" >
+     <div class="container">
+       <p class="pull-right">
+       		<a onclick="window.open('https://www.flickr.com/photos/damienz/7682053216')">Img01&middot;</a>
+       		<a onclick="window.open('https://www.flickr.com/photos/andjohan/1022097482')">Img02&middot;</a>
+       		<a onclick="window.open('https://www.flickr.com/photos/suburbanbloke/381634787')">Img03</a>
+       </p>
+       <p>2014 SCIS FIU &middot;<a href=#>License</a></p>
+     </div>
+</div>

@@ -1,0 +1,28 @@
+<div ng-include="'views/bootstrap-navbar.html'"></div>
+
+
+
+
+
+<div class="table-container">
+
+<h3>Winner {{ winner }}<span class="fa fa-trophy fa-lg pull-left"></span></h3>
+<br>
+
+	<table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="table hover order-column row-border" width="100%">
+		<thead>
+		    <tr>
+		        <th>Username</th>
+		        <th>Full Name</th>
+		        <th>Total Points</th>
+		    </tr>
+		</thead>
+		<tbody>
+		    <tr ng-repeat="user in contestActivity">
+		    	<td>{{user.userName}}</td>
+		    	<td>{{user.firstName}} {{user.lastName}}</td>
+		    	<td>{{user.points}}</td>
+		    </tr>
+	    </tbody>
+	</table>
+</div>

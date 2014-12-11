@@ -1,0 +1,62 @@
+
+<div data-ng-controller="bootstrapNavbarController" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+	  <div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	      <span class="sr-only">Toggle navigation</span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </button>
+	    <a class="navbar-brand active" href="#/userHome">
+	    	<span class="fa fa-home fa-fw"></span>&nbsp; Green Efforts
+	    </a>
+	  </div>
+	
+	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    <ul class="nav navbar-nav navbar-right">
+		    <li><a href="#/recycle"><span class="fa fa-recycle fa-fw"></span>&nbsp;Recycle&nbsp;</a></li>
+			<li data-ng-show="userRole.createMaterial == 1 || userRole.createItem == 1">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-tasks fa-fw"></span>&nbsp;Item<span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="#/materials"><span class="fa fa-eye fa-fw"></span>&nbsp;Materials</a></li>
+				    <li data-ng-show="userRole.createMaterial == 1"><a href="#/newMaterial"><span class="fa fa-plus fa-fw"></span>&nbsp;New Material</a></li>
+	    			<li class="divider"></li>
+				    <li><a href="#/items"><span class="fa fa-eye fa-fw"></span>&nbsp;Items</a></li>
+				    <li data-ng-show="userRole.createItem == 1"><a href="#/newItemStepOne"><span class="fa fa-plus fa-fw"></span>&nbsp;New Item</a></li>
+				  </ul>
+		      </li>
+		      <li>
+		      	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		      		<span class="fa fa-group fa-fw"></span>&nbsp;Groups&nbsp;
+		      		<span class="caret"></span>
+		      	</a>
+		      	  <ul class="dropdown-menu" role="menu">	
+		     			<li><a href="#/joinedGroups"><span class="fa fa-group fa-fw"></span>&nbsp;Joined Groups</a></li>
+		     			<li><a href="#/joinGroups"><span class="fa fa-search fa-fw"></span>&nbsp;Search Group</a></li>
+		     			<li class="divider"></li>	
+			     		<li><a href="#/newGroupProfile"><span class="fa fa-plus fa-fw"></span>&nbsp;Create Group</a></li>
+			     		<li><a href="#/myGroups"><span class="fa fa-info-circle fa-fw"></span>&nbsp;My Groups</a></li>
+		     			<li class="divider"></li>
+		     			<li><a href="#/acceptUserGroups"><span class="fa fa-group fa-fw"></span>&nbsp;Accept Users</a></li>
+		      	  </ul>
+		      </li>	      
+		      <li>
+		         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-trophy fa-fw"></span>&nbsp;Contests&nbsp;<span class="caret"></span></a>
+		      	  <ul class="dropdown-menu" role="menu">
+			     		<li><a href="#/newContest"><span class="fa fa-plus fa-fw"></span>&nbsp;New Contest</a></li>
+			     		<li><a href="#/viewContests"><span class="fa fa-eye fa-fw"></span>&nbsp;View Contests</a></li>
+		      	  </ul>
+		      </li>
+		      <li><a href="#/recycleLocationNearBy"><span class="fa fa-location-arrow fa-fw"></span>&nbsp;Recycling Locations&nbsp;&nbsp;</a></li>
+		      <li>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user fa-fw"></span>&nbsp;User<span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="#/editProfile"><span class="fa fa-edit fa-fw"></span>&nbsp;Edit Profile</a></li>
+				    <li><a href="#" data-ng-click="submitLogout()"><span class="fa fa-sign-out fa-fw"></span>&nbsp;Logout</a></li>
+				  </ul>
+		      </li>
+	    </ul>
+	  </div>
+	</div>
+</div>

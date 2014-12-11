@@ -1,0 +1,55 @@
+<div ng-include="'views/bootstrap-navbar.html'"></div>
+
+<div class="table-container">
+
+	<table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" class="table hover order-column row-border" width="100%">
+		<thead>
+		    <tr>
+		        <th>Group Name</th>
+		        <th>E-mail</th>
+		        <th>Address 1</th>
+		        <th>Address 2</th>
+		        <th>City</th>
+		        <th>State</th>
+		        <th>Zip Code</th>
+		        <th>Country</th>
+		        <th>Owner Name</th>
+		        <th>Owner Email</th>
+		    </tr>
+		</thead>
+		<tbody>
+		    <tr ng-repeat="group in groups" ng-click="clickGroup(group);">
+		    	<td>{{group.groupName}}</td>
+		    	<td>{{group.email}}</td>
+		    	<td>{{group.address1}}</td>
+		    	<td>{{group.address2}}</td>
+		    	<td>{{group.city}}</td>
+		    	<td>{{group.stateName}}</td>
+		    	<td>{{group.zipCode}}</td>
+		    	<td>{{group.countryName}}</td>
+		    	<td>{{group.firstName}} {{group.lastName}}</td>
+		    	<td>{{group.ownerEmail}}</td>
+		    </tr>
+	    </tbody>
+	</table>
+	
+	<div>
+		<label>You have selected: {{ selectedGroupName }}</label>
+	</div>
+	
+	<div class="pull-right">
+	    <div id="messages" class="alert alert-success" data-ng-show="successMessages" data-ng-bind="successMessages"></div>
+	<div id="messages" class="alert alert-danger" data-ng-show="errorMessages" data-ng-bind="errorMessages"></div>
+		<button type="button" class="btn btn-success pull-right" id="requestGroupUsersButton" ng-click="requestGroupUsers()">
+			<span class="fa fa-users fa-fw"></span>&nbsp;Members
+		</button>
+		
+		<button type="button" class="btn btn-success pull-right" id="updateProfileButton" ng-click="updateGroupProfile()">
+			<span class="fa fa-edit fa-fw"></span>&nbsp;Edit
+		</button>
+	</div>
+	
+
+
+
+</div>

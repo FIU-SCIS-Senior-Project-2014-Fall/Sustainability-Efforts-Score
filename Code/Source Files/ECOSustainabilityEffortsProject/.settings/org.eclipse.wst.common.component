@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ECOSustainabilityEffortsProject">
+        <wb-resource deploy-path="/" source-path="/apps/ECOSustainabilityEfforts/common"/>
+        <wb-resource deploy-path="/" source-path="/apps/ECOSustainabilityEfforts/desktopbrowser"/>
+        <wb-resource deploy-path="/" source-path="/apps/iOSApplication/common"/>
+        <wb-resource deploy-path="/" source-path="/apps/ECOSustainabilityEfforts/iphone"/>
+        <wb-resource deploy-path="/" source-path="/apps/ECOSustainabilityEfforts/mobilewebapp"/>
+        <property name="context-root" value="ECOSustainabilityEffortsProject"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,28 @@
+<div ng-include="'views/bootstrap-navbar.html'"></div>
+
+<form class="form-horizontal" name="groupProfileForm" role="form">
+	<div class="container">
+	<div class="form-ses-lg">
+		<div id="messages" class="alert alert-success" data-ng-show="successMessages" data-ng-bind="successMessages"></div>
+		<div id="messages" class="alert alert-danger" data-ng-show="errorMessages" data-ng-bind="errorMessages"></div>
+		<div class="form-group" >
+			<div>
+				<label class="control-label" >Username: {{ user.userName }}</label>
+			</div>
+			<div>
+				<label class="control-label" >Email: {{ user.email }}</label>
+			</div>
+		    <div>
+				<label for="groupRole">Group Role</label>
+			    <select class="form-control" ng-model="groupRole" name="groupRole" id="groupRole" ng-options="groupRole.name for groupRole in groupRoles"></select>
+		    </div>
+		</div>	
+		
+		<div class="form-group">
+	         <button type="button"  class="btn btn-success" value="Update" title="Update" ng-click="updateJoinedGroupUser();">
+	           <span class="fa fa-save fa-fw"></span>&nbsp;Save
+	         </button>
+	    </div>
+	</div>
+	</div>
+</form>
